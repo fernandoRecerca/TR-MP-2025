@@ -1,0 +1,54 @@
+#!/bin/bash
+logs="*.bak *.aux *.log *.bbl *.blg *.toc *.lot *.lof *.out *.idx *.ilg *.ind *.brf *.backup"
+swaps="*% *~ .*~ .*%"
+folders=". cover/ capitols/"
+
+case "$1" in
+  all)
+    for directori in $folders; do
+      	cd ${directori};
+      	echo "Estic al directori " ${directori};
+      	for extensio in $docs; do
+       		rm -f $extensio
+      	done
+      	for extensio in $logs; do
+       	 	rm -f $extensio
+      	done
+      	for extensio in $swaps; do
+        	rm -f $extensio
+      	done
+	cd -;
+    done
+    ;;
+  logs)
+    for directori in $folders; do
+      cd ${directori};
+      for extensio in $logs; do
+        rm -f $extensio
+      done
+    done
+    ;;
+  swaps)
+    for directori in $folders; do
+      cd ${directori};
+      for extensio in $swaps; do
+        rm -f $extensio
+      done
+    done
+    ;;
+  garbage)
+    for directori in $folders; do
+      cd ${directori};
+      for extensio in $logs; do
+        rm -f $extensio
+      done
+      for extensio in $swaps; do
+        rm -f $extensio
+      done
+    done
+    ;;
+  *)
+    echo "Usage: $0 {all|logs|swaps|garbage}"
+    exit 1
+    ;;
+esac
