@@ -1,0 +1,9 @@
+git status //Mira com has canviat el repositori
+git pull //1a comanda
+git add file // afegir file
+git commit -a // afegir totes les modificades
+git push origin master // envia els canvis 
+git config --global core.editor vim //fixa el vim com a editor per defecte (vosaltres podeu posar el gedit o qualsevol altre)
+aspell --lang=ca --encoding=iso-8859-1 -c fitxer
+git archive master --prefix='RINO/' --format=zip > RINO_1.0.zip //to create a new release of the project
+
