@@ -1,5 +1,5 @@
 #!/bin/bash
-doc=./memoria
+doc=./memoriaMax
 
 sh netejarDoc all
 
