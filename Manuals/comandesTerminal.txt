@@ -1,0 +1,25 @@
+    cp Còpia arxius.
+
+    mv Mou arxius d'ubicació.
+
+    ln Permet que pugui existir un "contingut" amb diversos noms d'arxius creant un enllaç.
+
+    rm Esborra arxius i directoris.
+
+    find Mostra en pantalla fitxers i/o directoris atenent a opcions determinades.
+
+    ls Llista arxius i directoris d'un directori. Usos:
+
+    cd. Canvia el directori actual de treball. Permet indicar el camí des del directori arrel "/" o des del de treball. Altres:
+
+    cd .. (Ens mou al directori anterior).
+
+    cd / (Ens mou al directori arrel).
+
+    cd (Ens mou al nostre directori origen "home", igual que cd ~).
+
+    mkdir Crea directori.
+
+    rmdir Esborra directori. 
+
+
