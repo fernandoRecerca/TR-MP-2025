@@ -1,0 +1,43 @@
+\chapter{Recerca prèvia}
+
+Abans de començar a programar i a fer proves amb dades reals, vaig dedicar temps a informar-me sobre el context del meu treball. Aquesta recerca prèvia m’ha servit per entendre millor de què estava parlant i quins coneixements necessitava adquirir.
+
+\section{El Bicing i la mobilitat urbana}
+El Bicing és un servei públic de bicicletes compartides que va aparèixer a Barcelona l’any 2007. Des d’aleshores s’ha convertit en un element molt important de la mobilitat de la ciutat. El seu objectiu és reduir l’ús del cotxe i fomentar un transport més sostenible. Actualment el sistema disposa de centenars d’estacions i milers de bicicletes, tant mecàniques com elèctriques.
+
+Un dels aspectes més interessants del Bicing és que funciona amb tecnologia digital: cada estació està connectada i envia informació constant sobre el nombre de bicicletes i els espais lliures. Això permet als usuaris consultar l’estat de les estacions en temps real des del mòbil.
+
+\subsection{El concepte de dades obertes}
+En la meva recerca vaig descobrir que moltes ciutats publiquen informació oberta sobre els seus serveis. Aquest concepte s’anomena \textit{open data} i consisteix a posar a disposició de tothom dades que poden ser útils per a estudis, investigacions o aplicacions.
+
+En el cas del Bicing, la informació de les estacions es pot consultar mitjançant una API oberta. Això vol dir que qualsevol persona pot programar un codi que es connecti a internet i descarregui l’estat actualitzat del servei.
+
+\section{Què és una API?}
+API són les sigles de \textit{Application Programming Interface}. En termes senzills, és una manera que tenen diferents programes de comunicar-se entre ells. En lloc d’accedir directament a la base de dades del Bicing, els programadors utilitzen l’API, que és una mena de porta d’entrada segura i estructurada.
+
+Quan un programa com el meu fa una petició a l’API, rep un paquet de dades amb informació actualitzada. Aquest paquet normalment està en format JSON.
+
+\section{El format JSON}
+JSON vol dir \textit{JavaScript Object Notation}. És un format molt utilitzat perquè és lleuger, fàcil de llegir i entenedor tant per màquines com per persones. S’assembla a una llista de claus i valors, com si fos un diccionari en Python.
+
+Per exemple, una estació de Bicing pot aparèixer en JSON així:
+
+\begin{verbatim}
+{
+  "name": "Gran Via - Marina",
+  "free_bikes": 5,
+  "empty_slots": 7
+}
+\end{verbatim}
+
+A partir d’aquesta informació, el meu programa pot calcular fàcilment els canvis ràpids que es poden fer.
+
+\section{El llenguatge Python}
+Per a la part pràctica vaig triar Python perquè és un llenguatge que ja coneixia una mica i que es fa servir molt en el món de la ciència de dades. Python té biblioteques molt útils, com \texttt{requests} per connectar-se a APIs, o \texttt{json} per treballar amb dades en aquest format.
+
+Una altra avantatge és que és fàcil d’entendre i de llegir, fins i tot per persones que no són expertes en programació. Això em permetia explicar millor el codi dins del treball.
+
+\section{Mobilitat sostenible}
+Finalment, vaig voler documentar-me sobre la importància de la mobilitat sostenible. El transport és una de les principals fonts de contaminació a les ciutats. Per això, els serveis com el Bicing tenen un paper clau: permeten reduir emissions i també milloren la salut de les persones, ja que promouen l’activitat física.
+
+A més, Barcelona és una de les ciutats que més aposta per la bicicleta, amb carrils bici que cada any augmenten. Tot això fa que el meu treball no sigui només tècnic sinó també socialment rellevant.
