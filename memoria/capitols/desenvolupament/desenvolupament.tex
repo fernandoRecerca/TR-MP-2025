@@ -1,0 +1,85 @@
+\chapter{Desenvolupament del programa}
+
+Un cop definida la metodologia, vaig passar a la part pràctica del treball: el desenvolupament del programa en Python. Aquesta secció descriu com està construït el codi, quines llibreries he fet servir i com es processen les dades fins a obtenir el resultat final.
+
+\section{Estructura general}
+El programa segueix una estructura senzilla però efectiva:
+\begin{enumerate}
+    \item Connectar-se a la font de dades oberta (API de CityBikes).
+    \item Rebre les dades en format JSON.
+    \item Recórrer totes les estacions i obtenir el nombre de bicicletes i d'espais lliures.
+    \item Calcular el nombre de canvis ràpids possibles a cada estació.
+    \item Mostrar els resultats de manera clara i entenedora per pantalla.
+\end{enumerate}
+
+\section{Llibreries utilitzades}
+He utilitzat principalment la llibreria \texttt{requests}, que permet fer peticions HTTP a servidors web i obtenir-ne les respostes. També he fet servir la llibreria \texttt{json}, que ve inclosa amb Python i serveix per treballar amb aquest format de dades.
+
+Aquestes llibreries són molt utilitzades en el món de la programació i m’han permès simplificar molt la feina.
+
+\section{Connexió amb l’API}
+Per obtenir les dades he fet una crida a la URL següent:
+
+\begin{verbatim}
+url = "https://api.citybik.es/v2/networks/bicing"
+response = requests.get(url)
+\end{verbatim}
+
+Aquesta línia estableix la connexió i descarrega el contingut. Tot seguit, comprovo que la resposta sigui correcta i converteixo les dades en un objecte JSON:
+
+\begin{verbatim}
+if response.status_code != 200:
+    print("Error en la connexió:", response.status_code)
+    exit()
+
+data = response.json()
+\end{verbatim}
+
+\section{Recorregut de les estacions}
+Les estacions estan guardades dins de \texttt{data["network"]["stations"]}. Per cada estació puc consultar valors com el nom, les bicicletes lliures i els espais disponibles.
+
+\begin{verbatim}
+for station in data["network"]["stations"]:
+    bicis = station["free_bikes"]
+    espais = station["empty_slots"]
+\end{verbatim}
+
+\section{Càlcul del canvi ràpid}
+El canvi ràpid s’ha definit com el mínim entre les bicicletes lliures i els espais disponibles. Això s’implementa amb la funció \texttt{min} de Python:
+
+\begin{verbatim}
+canvi_rapid = min(bicis, espais)
+\end{verbatim}
+
+D’aquesta manera, si una estació té 5 bicis i 7 espais, els canvis ràpids possibles són 5. Si té 0 bicis i 12 espais, el resultat és 0.
+
+\section{Sortida de resultats}
+Per fer més entenedora la informació, el programa mostra per pantalla les dades amb un format clar:
+
+\begin{verbatim}
+print("Estació:", station["name"])
+print("   -> Bicis lliures:", bicis)
+print("   -> Espais lliures:", espais)
+print("   -> Canvis ràpids possibles:", canvi_rapid)
+print("-" * 40)
+\end{verbatim}
+
+La sortida és fàcil de llegir i permet veure ràpidament l’estat de cada estació.
+
+\section{Exemple de funcionament}
+Quan s’executa el programa, es pot obtenir una sortida similar a la següent:
+
+\begin{verbatim}
+Estació: Gran Via - Marina
+   -> Bicis lliures: 5
+   -> Espais lliures: 7
+   -> Canvis ràpids possibles: 5
+----------------------------------------
+Estació: Passeig de Gràcia - Casp
+   -> Bicis lliures: 0
+   -> Espais lliures: 12
+   -> Canvis ràpids possibles: 0
+----------------------------------------
+\end{verbatim}
+
+Aquest exemple mostra com el programa processa correctament la informació i calcula els canvis ràpids a partir de les dades reals proporcionades per l’API.
