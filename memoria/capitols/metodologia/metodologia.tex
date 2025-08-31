@@ -1,23 +1,54 @@
 \chapter{Metodologia}
 
-Per a la realització d’aquest treball, hem decidit utilitzar una metodologia que ens permetés organitzar la feina de manera eficient i assegurar la qualitat del resultat final. La metodologia inclou tant l’organització del projecte i la manera de treballar amb el codi i les dades com la redacció de la memòria amb eines informàtiques adequades. La tria d’aquestes eines s’ha basat en la seva capacitat per permetre un treball ordenat, segur i proper a la manera en què treballen els professionals en projectes tecnològics i científics.
+En aquest capítol descric de manera detallada com he dut a terme el treball, quins recursos he utilitzat, per què he pres determinades decisions i quins punts clau han marcat el procés. La metodologia no és només la llista de passos seguits, sinó també una reflexió sobre el camí recorregut, els problemes trobats i les possibles alternatives que podria haver triat.
 
-\section{Control de versions amb Git}
+\section{Eines utilitzades}
 
-Una part fonamental de la metodologia ha estat l’ús de Git, que és un sistema de control de versions que ens ha permès guardar totes les modificacions que hem fet al projecte, registrar els canvis realitzats i poder recuperar versions anteriors quan ha estat necessari. Aquesta eina ens ha donat seguretat a l’hora de treballar amb el codi i amb els fitxers de suport, ja que ens ha permès provar noves funcionalitats en branques separades sense afectar la versió principal del projecte. Això ha estat especialment útil en el desenvolupament de l’algoritme per calcular les rutes i gestionar la informació de les estacions de Bicing i AMBici. D’aquesta manera hem pogut comprovar els resultats pas a pas i organitzar el projecte amb més eficàcia, mantenint un registre complet de l’evolució de la feina.
+\subsection{Màquina virtual}
+He treballat dins d’una \textbf{màquina virtual}, és a dir, un ordinador simulat dins del meu propi ordinador. Aquesta eina m’ha permès tenir un entorn de treball separat i més controlat. És molt útil per mantenir tot el projecte agrupat i organitzat. Un dels reptes, però, és que consumeix molts recursos i pot alentir l’ordinador si no es disposa d’un equip potent.
 
-\section{Redacció del treball amb LaTeX}
+\subsection{Kile}
+Per escriure aquesta memòria he utilitzat \textbf{Kile}, un editor especialitzat en LaTeX. Aquest programa simplifica la feina amb plantilles, autocompletat i compilació directa. Al principi costa una mica adaptar-se, però un cop après resulta molt eficient per treballar amb documents extensos.
 
-Per a la redacció de la memòria hem utilitzat LaTeX, un sistema que permet elaborar documents amb un format uniforme i professional. Aquesta eina ha estat especialment útil per estructurar el treball en capítols i seccions, afegir figures i taules amb els peus numerats automàticament, generar índexos i bibliografia sense errors i obtenir un resultat final amb un aspecte net i coherent. Treballar amb LaTeX ens ha permès centrar-nos en el contingut i en l’explicació dels processos seguits sense preocupar-nos de l’estètica, ja que el sistema s’encarrega de donar coherència visual a tot el document.
+\subsection{Git}
+He utilitzat \textbf{Git} per controlar les versions del codi i de la memòria. Això m’ha permès guardar un historial de canvis i poder tornar enrere si alguna cosa no funcionava. Git és molt utilitzat a nivell professional i m’ha servit per familiaritzar-me amb eines de col·laboració i organització de projectes.
 
-\section{Organització i planificació del treball}
+\subsection{LaTeX}
+La memòria està redactada íntegrament amb \textbf{LaTeX}, un sistema de composició de textos científics i tècnics. M’ha permès obtenir un format professional, amb bibliografia, índexs automàtics i figures ben integrades. Tot i que al principi requereix aprendre la seva sintaxi, el resultat és molt més net i formal que amb un processador de textos convencional.
 
-Un altre aspecte important de la metodologia ha estat planificar les diferents fases del treball de manera clara i ordenada. Primer hem realitzat una recerca prèvia sobre les dades disponibles de Bicing i AMBici, les xarxes de carrils bici i les eines per calcular rutes. A continuació hem establert un flux de treball que inclou la creació del prototip de l’aplicació, la implementació de l’algoritme per calcular rutes combinant ambdós serveis i la validació del seu funcionament amb casos reals. Aquesta planificació ha estat essencial per poder avançar de manera ordenada i evitar errors o repeticions.
+\subsection{Java i Python}
+El llenguatge principal del projecte ha estat \textbf{Python}, ja que és senzill i té moltes llibreries que faciliten el tractament de dades. En alguns moments també vaig fer proves amb \textbf{Java} per comparar com es podria implementar la connexió a una API en un llenguatge diferent. Tot i això, Python s’ha demostrat molt més àgil per aquest tipus de tasques.
 
-\section{Avantatges de la metodologia aplicada}
+\section{Procés de treball}
 
-La combinació de Git i LaTeX ha estat especialment beneficiosa perquè ens ha permès treballar de manera estructurada i segura. Hem pogut controlar l’evolució del projecte, tenir un registre de tots els canvis i redactar un document amb un format professional. Això ens ha acostat a la manera en què treballen els professionals en projectes tecnològics i científics, millorant la qualitat del treball i la comprensió dels processos seguits. També ha facilitat que el treball fos més transparent i fàcil de revisar, ja que tot està documentat i registrat de manera clara.
+El procés que he seguit ha estat el següent:
+\begin{enumerate}
+    \item Recerca de dades i fonts oficials.
+    \item Primera connexió a l’API de CityBikes amb \texttt{requests}.
+    \item Lectura del JSON i accés a camps específics.
+    \item Definició del concepte de ``canvi ràpid''.
+    \item Implementació del bucle per processar totes les estacions.
+    \item Presentació dels resultats de manera clara i ordenada.
+\end{enumerate}
 
-\section{Consideracions finals}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imatges/exemple_api.png}
+    \caption{Exemple de dades obtingudes de l’API en format JSON.}
+\end{figure}
 
-Gràcies a aquesta metodologia, hem aconseguit desenvolupar l’aplicació i redactar la memòria amb un alt grau d’eficiència i qualitat. El procés ha estat ordenat, segur i proper a la pràctica professional, cosa que aporta un valor afegit al treball de recerca. A més, aquesta manera de treballar ens ha permès aprendre a utilitzar eines que són habituals en l’àmbit científic i tecnològic, aportant-nos una experiència pràctica i formativa molt útil per a futurs projectes.
+\section{Alternatives considerades}
+
+Durant el desenvolupament vaig pensar en altres possibilitats: utilitzar dades històriques en CSV per fer estudis d’evolució; treballar amb altres llenguatges com JavaScript; o fins i tot crear una base de dades pròpia per guardar les consultes i analitzar-ne l’evolució. Finalment vaig descartar aquestes opcions perquè complicaven massa l’abast del treball.
+
+\section{Problemes trobats i solucions}
+
+Al llarg del projecte he trobat diverses dificultats, com ara:
+\begin{itemize}
+    \item Errors de connexió amb l’API: solucionats comprovant la URL i la connexió a internet.
+    \item Problemes amb la lectura del JSON: vaig aprendre a explorar l’estructura de les dades amb comandes de prova.
+    \item Format de la sortida poc entenedor: vaig anar ajustant la manera de mostrar resultats fins a aconseguir un estil més clar.
+\end{itemize}
+
+\section{Reflexió personal}
+La metodologia que he seguit m’ha permès aprendre molt i treballar de manera ordenada. El fet d’utilitzar dades reals i eines professionals m’ha donat la sensació de fer un projecte proper al món real. També he après que hi ha moltes maneres d’aconseguir un mateix resultat i que és important escollir l’eina adequada segons els objectius i el temps disponible.
