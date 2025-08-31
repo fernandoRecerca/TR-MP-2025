@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Programa per consultar estacions de Bicing i AMBici i trobar punts de transbord.
 
@@ -18,17 +16,17 @@ import math
 import requests
 from typing import List, Dict, Any
 
-# ─────────────────────────────────────────────────────────────
+
 # URLs d’API
-# ─────────────────────────────────────────────────────────────
+
 API_BICING = "https://api.citybik.es/v2/networks/bicing"
 API_AMBICI_INFO = "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_bs/ca/station_information.json"
 API_AMBICI_STATUS = "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_bs/ca/station_status.json"
 
 
-# ─────────────────────────────────────────────────────────────
 # DESCÀRREGA DE DADES
-# ─────────────────────────────────────────────────────────────
+
+
 def obtenir_dades_bicing(timeout: int = 10) -> List[Dict[str, Any]]:
     """Descarrega les dades de Bicing via CityBikes."""
     try:
@@ -93,9 +91,9 @@ def obtenir_dades_ambici(timeout: int = 10) -> List[Dict[str, Any]]:
     return estacions
 
 
-# ─────────────────────────────────────────────────────────────
+
 # DISTÀNCIA ENTRE PUNTS
-# ─────────────────────────────────────────────────────────────
+
 def distancia_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     """Distància en metres (fórmula de Haversine)."""
     R = 6371000
@@ -106,9 +104,9 @@ def distancia_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return 2 * R * math.asin(math.sqrt(a))
 
 
-# ─────────────────────────────────────────────────────────────
+
 # FILTRATGE D’ESTACIONS
-# ─────────────────────────────────────────────────────────────
+
 def filtrar_estacions(estacions: List[Dict[str, Any]], args: argparse.Namespace) -> List[Dict[str, Any]]:
     """Filtra per barri o per coordenades+radi."""
     result = estacions
@@ -127,9 +125,9 @@ def filtrar_estacions(estacions: List[Dict[str, Any]], args: argparse.Namespace)
     return result
 
 
-# ─────────────────────────────────────────────────────────────
+
 # CERCA DE PUNTS DE TRANSBORD
-# ─────────────────────────────────────────────────────────────
+
 def punts_transbord(bicing: List[Dict[str, Any]], ambici: List[Dict[str, Any]], radi: float = 250):
     """Busca parelles d’estacions Bicing ↔ AMBici properes (< radi)."""
     punts = []
@@ -158,9 +156,9 @@ def filtrar_transbords(punts: List, args: argparse.Namespace) -> List:
     return result
 
 
-# ─────────────────────────────────────────────────────────────
+
 # MOSTRAR RESULTATS
-# ─────────────────────────────────────────────────────────────
+
 def imprimir_estacions(estacions: List[Dict[str, Any]], sumari: bool) -> None:
     """Mostra info de cada estació i un resum opcional."""
     for e in estacions:
@@ -194,9 +192,9 @@ def imprimir_transbords(punts: List, limit: int = None):
         print(f"- {b['nom']} (Bicing) ↔ {a['nom']} (AMBici) [{d} m]")
 
 
-# ─────────────────────────────────────────────────────────────
+
 # EXPORTAR CSV
-# ─────────────────────────────────────────────────────────────
+
 def desar_csv(estacions: List[Dict[str, Any]], path: str) -> None:
     """Desa les dades en CSV."""
     camps = ["servei", "id", "nom", "lat", "lon", "bicis_lliures", "espais_lliures", "canvi_rapid"]
@@ -207,9 +205,9 @@ def desar_csv(estacions: List[Dict[str, Any]], path: str) -> None:
             w.writerow(e)
 
 
-# ─────────────────────────────────────────────────────────────
+
 # ARGUMENTS DE LÍNIA DE COMANDES
-# ─────────────────────────────────────────────────────────────
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Consulta estacions de Bicing i AMBici, i punts de transbord")
     p.add_argument("--top", "-t", type=int, default=None, help="Mostra només les N estacions amb més canvi ràpid")
@@ -223,9 +221,9 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
-# ─────────────────────────────────────────────────────────────
+
 # MAIN
-# ─────────────────────────────────────────────────────────────
+
 def main() -> None:
     args = parse_args()
 
