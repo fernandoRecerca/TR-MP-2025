@@ -1,164 +1,46 @@
 \chapter{Metodologia}
 
-En aquest treball he utilitzat diferents eines i tecnologies que m’han permès entendre millor com es desenvolupa un projecte complet de programació.
-La meva manera de treballar ha estat sobretot \textbf{aprendre fent}: investigar, provar, equivocar-me, corregir i finalment aconseguir un resultat funcional.
-Aquest procés m’ha ajudat no només a obtenir un programa capaç d’integrar les dades de Bicing i AMBici, sinó també a descobrir i aprendre conceptes nous relacionats amb la programació, el tractament de dades, el control de versions i la documentació tècnica.\\
+La realització d’aquest treball ha requerit combinar diferents eines i metodologies, tant de caràcter tècnic com organitzatiu. En aquest capítol descric el conjunt de recursos utilitzats i la manera com s’han integrat en el procés de recerca, amb l’objectiu de donar una visió clara i transparent del camí seguit.
 
-La metodologia no ha estat lineal, sinó que ha combinat moments de recerca amb proves pràctiques.
-Moltes vegades he hagut de buscar informació sobre com funcionen les APIs, altres cops he hagut de provar diferents maneres de calcular distàncies o de filtrar dades, i també he hagut d’investigar com treballar amb Git, amb màquines virtuals o amb LaTeX per a la documentació.
-Això m’ha permès entendre que en informàtica és tan important saber resoldre problemes com saber on buscar la informació adequada.
+\section{Entorn de treball}
 
-Per explicar tot aquest procés, he dividit la metodologia en diversos blocs.
-En primer lloc, parlaré de l’ús de \textbf{Python} com a llenguatge de programació i de com he après a estructurar el codi i treballar amb dades en temps real.
-A continuació, explicaré com he treballat amb les \textbf{APIs} de Bicing i AMBici, i com he resolt el repte de calcular \textbf{distàncies i punts de transbord}.
-També dedicaré un apartat al control de versions amb \textbf{Git}, a la configuració d’una \textbf{màquina virtual} per garantir la reproduïbilitat i, finalment, a l’ús de \textbf{LaTeX i Kile} per redactar aquesta memòria de manera professional.
-El capítol es tancarà amb una síntesi dels \textbf{aprenentatges generals} adquirits durant tot el projecte.
+Per garantir un entorn estable i controlat vaig optar per treballar dins d’una \textbf{màquina virtual}. Aquesta elecció respon a la necessitat de separar el desenvolupament del projecte del sistema operatiu principal, evitant problemes de compatibilitat i assegurant que tot el programari necessari estigués perfectament configurat. A la màquina virtual vaig instal·lar una distribució de Linux, que em va permetre tenir accés a les eines habituals de programació i alhora a gestors de paquets que faciliten la instal·lació de biblioteques. Treballar d’aquesta manera també em dóna la possibilitat d’exportar i replicar l’entorn complet en altres ordinadors, mantenint la coherència del projecte.
 
+\section{Redacció i composició del text}
 
-\section{Eines utilitzades}
+La memòria s’ha redactat íntegrament amb \LaTeX, utilitzant l’editor \textbf{Kile}. Aquesta eina proporciona una interfície amigable per treballar amb documents científics, permet dividir el treball en capítols i seccions, i ofereix eines per compilar ràpidament a PDF. L’ús de \LaTeX\ ha estat clau per mantenir una presentació professional del text, gestionar cites i bibliografia i incloure figures, taules i fórmules sense dificultats. A més, la redacció en \LaTeX\ facilita la traçabilitat dels canvis, ja que el codi font del document es pot gestionar igual que el codi d’un programa.
 
-\subsection{Màquina virtual i entorn de treball}
+\section{Gestió de versions i col·laboració}
 
-Per desenvolupar aquest projecte he decidit utilitzar una \textbf{màquina virtual} com a entorn principal de treball.
-Una màquina virtual és un programa que permet executar un sistema operatiu complet dins d’un altre ordinador.
-És com tenir un ordinador dins de l’ordinador: amb el seu propi disc dur, memòria i configuració, però compartint el maquinari físic de la màquina principal.
+Per controlar l’evolució del treball i assegurar la seguretat de la informació, he utilitzat \textbf{GitHub} com a plataforma de control de versions. Cada canvi important tant en el codi com en la memòria s’ha enregistrat mitjançant commits, que permeten documentar el progrés i tornar a versions anteriors en cas de necessitat. Aquesta pràctica ha resultat especialment útil quan he rebut comentaris del tutor: he pogut obrir noves branques per provar modificacions i, un cop validades, fusionar-les al projecte principal. GitHub també ha servit com a espai d’emmagatzematge remot, accessible en qualsevol moment i des de qualsevol dispositiu.
 
-He triat treballar amb una màquina virtual per diversos motius.
-En primer lloc, em permetia tenir un entorn \textbf{net i controlat}, sense risc de fer malbé el sistema principal amb instal·lacions de programes o configuracions equivocades.
-En segon lloc, m’assegurava que el projecte es podia reproduir fàcilment en altres ordinadors, ja que sempre tindria el mateix sistema operatiu i les mateixes versions de Python i les llibreries necessàries.
-Finalment, m’ha ajudat a entendre millor conceptes bàsics de la informàtica moderna, com la \textbf{virtualització} i l’aïllament d’entorns.
+\section{Programació i tractament de dades}
 
-La màquina virtual que vaig configurar estava basada en Linux, ja que és un sistema operatiu molt utilitzat en programació i administració de sistemes.
-Dins d’aquest entorn vaig instal·lar totes les eines necessàries: Python, el gestor de paquets \texttt{pip}, Git i l’editor Kile per a LaTeX.
-Així, tenia tot el projecte centralitzat en un entorn específicament preparat per a ell.
+El llenguatge de programació principal ha estat \textbf{Python}, per la seva flexibilitat i la gran varietat de biblioteques disponibles. El desenvolupament del codi s’ha centrat en quatre tasques fonamentals:
+\begin{enumerate}
+  \item Accedir a les \textbf{APIs} públiques de Bicing i AMBici per obtenir dades en temps real.
+  \item Processar i netejar les dades obtingudes, assegurant que fossin consistents i comparables.
+  \item Implementar algorismes per calcular distàncies i identificar punts de transbord entre estacions.
+  \item Generar sortides en diversos formats: resums de terminal, fitxers CSV i representacions gràfiques.
+\end{enumerate}
 
-Gràcies a aquesta decisió he après que utilitzar màquines virtuals no només és una qüestió tècnica, sinó també una bona pràctica professional.
-En equips de treball grans, cada programador pot tenir una màquina virtual idèntica a la dels seus companys, i això evita molts problemes de compatibilitat.
-També he entès que aquesta és la base de moltes tecnologies actuals, com els contenidors Docker o els serveis al núvol.
+En aquest procés han estat essencials biblioteques com \texttt{pandas} per al maneig de taules de dades, \texttt{matplotlib} per a la generació de gràfics i \texttt{geopy} per al càlcul de distàncies geogràfiques. Per a les connexions amb les APIs, la biblioteca \texttt{requests} ha estat la més utilitzada.
 
-En resum, l’ús de la màquina virtual m’ha permès treballar amb més seguretat i confiança, assegurant-me que el meu projecte era \textbf{reproductible, portable i professional}.
+Pel que fa a l’edició del codi, he combinat dos entorns: d’una banda, \textbf{Vim}, un editor lleuger i potent que em permet treballar ràpidament des del terminal; de l’altra, l’ús de notebooks i scripts més llargs per validar resultats i generar figures. Aquesta doble aproximació m’ha ajudat a mantenir la flexibilitat i la claredat en el desenvolupament.
 
-\subsection{Ús de Python per al desenvolupament}
+\section{Procés de desenvolupament}
 
-El llenguatge de programació que he triat per aquest projecte és \textbf{Python}.
-Python és actualment un dels llenguatges més utilitzats arreu del món, especialment en camps com la ciència de dades, la intel·ligència artificial i la programació acadèmica.
-Una de les seves grans avantatges és la seva \textbf{senzillesa}, ja que té una sintaxi clara i fàcil d’entendre, però alhora disposa d’una enorme quantitat de llibreries que permeten resoldre problemes complexos.
-
-En el meu cas, Python ha estat l’eina ideal per treballar amb \textbf{dades en temps real} provinents de dues fonts diferents: l’API del Bicing i l’API d’AMBici.
-Amb la llibreria \texttt{requests} he pogut descarregar la informació en format \textbf{JSON}, i posteriorment l’he processat per obtenir només els camps necessaris: nom de l’estació, coordenades geogràfiques, bicicletes lliures i espais disponibles.
-També he afegit un indicador nou, anomenat \textbf{canvi ràpid}, que calcula quants intercanvis immediats es poden fer en una estació (és a dir, el mínim entre bicis lliures i espais lliures).
-
-Un altre aspecte important ha estat l’\textbf{organització del codi}.
-He après a dividir el programa en \textbf{funcions} independents, cadascuna amb una responsabilitat clara: obtenir dades, calcular distàncies, filtrar estacions, trobar punts de transbord, etc.
-Aquesta manera de treballar fa que el programa sigui més fàcil d’entendre i de mantenir.
-També he fet servir la llibreria \texttt{argparse} per afegir paràmetres a la línia de comandes, de manera que l’usuari pot escollir quines opcions vol executar, com ara \texttt{--top}, \texttt{--barri}, \texttt{--coords} o \texttt{--transbord}.
-
-Finalment, he incorporat la possibilitat d’\textbf{exportar dades en CSV}, un format molt comú que permet obrir els resultats en programes com Excel.
-Això m’ha ensenyat que un programa no només ha de mostrar informació a la pantalla, sinó també oferir opcions per \textbf{guardar i reutilitzar} aquestes dades.
-
-En resum, gràcies a Python he pogut entendre millor com es treballa amb dades reals, com es dissenya un programa modular i flexible, i com es poden crear eines pràctiques que resolguin necessitats concretes.
-
-\subsection{Treball amb APIs i dades en temps real}
-
-Una de les parts més importants d’aquest projecte ha estat aprendre a utilitzar \textbf{APIs} per obtenir dades en temps real.
-Una API (Application Programming Interface) és un servei que permet connectar-se a una aplicació i obtenir informació o enviar-li instruccions.
-En el cas de Bicing i AMBici, les APIs ofereixen informació constantment actualitzada sobre l’estat de les estacions i les bicicletes disponibles.
-
-Per al \textbf{Bicing} vaig utilitzar el servei de \textbf{CityBikes}, que recull informació de moltes xarxes de bicicletes compartides d’arreu del món.
-Aquest servei em permet descarregar totes les estacions de Bicing de Barcelona en format \textbf{JSON}.
-JSON (JavaScript Object Notation) és un format molt utilitzat a Internet per intercanviar dades: és lleuger, fàcil d’entendre i pot ser llegit directament per Python com si fossin diccionaris i llistes.
-
-Per a l’\textbf{AMBici} la situació era diferent.
-No hi havia una API tan coneguda com la de Bicing, i vaig haver d’investigar fins a descobrir que funciona amb l’estàndard \textbf{GBFS (General Bikeshare Feed Specification)} a través de la plataforma Nextbike.
-Aquest estàndard defineix diferents arxius JSON: un amb la informació fixa de les estacions (nom, coordenades, capacitat), i un altre amb l’estat en temps real (bicis lliures i espais lliures).
-Això em va ensenyar que cada servei pot publicar la informació de manera diferent i que cal adaptar el codi per combinar-los en un sol programa.
-
-Treballar amb aquestes APIs m’ha obligat a aprendre a \textbf{analitzar la documentació} per entendre què significa cada camp del JSON i com s’ha d’interpretar.
-També he après a gestionar situacions en què l’API pot fallar: potser la connexió no respon, o el format de dades canvia lleugerament.
-Per això he afegit al codi comprovacions i missatges d’error que ajuden l’usuari a entendre què ha passat.
-
-En resum, gràcies al treball amb APIs i JSON he après que tenir dades no és suficient: cal entendre-les, filtrar-les i transformar-les en informació útil.
-Aquesta part ha estat molt enriquidora perquè m’ha ensenyat a connectar-me amb serveis externs i a integrar-los en un programa propi.
-
-
-\subsection{Càlcul de distàncies i punts de transbord}
-
-Per poder determinar si dues estacions estan a prop, he hagut d’aprendre a calcular distàncies a partir de les coordenades de latitud i longitud.
-Com que la Terra és gairebé esfèrica, no es poden calcular les distàncies simplement amb fórmules planes com el teorema de Pitàgores.
-Per això he utilitzat la \textbf{fórmula de Haversine}, molt emprada en geografia i navegació.
-
-Aquesta fórmula té en compte la curvatura de la Terra i permet obtenir la distància entre dos punts a partir de les seves coordenades.
-En aquest projecte s’ha utilitzat per dues funcionalitats concretes:
+El projecte no s’ha desenvolupat de manera lineal, sinó seguint un cicle iteratiu:
 \begin{itemize}
-    \item Filtrar les estacions dins d’un \textbf{radi} determinat a partir d’unes coordenades concretes (opció \texttt{--coords}).
-    \item Detectar \textbf{punts de transbord} entre Bicing i AMBici, és a dir, estacions de dues xarxes situades a menys de 250 metres.
+  \item Definició inicial del problema i dels requisits amb el tutor.
+  \item Elaboració de prototips senzills en Python per provar la viabilitat del tractament de dades.
+  \item Millora progressiva dels algorismes i incorporació de noves funcionalitats (detecció de transbords, càlcul d’indicadors, visualització).
+  \item Revisió periòdica dels resultats amb el tutor i adaptació segons els comentaris rebuts.
+  \item Integració de tots els elements (codi, figures i text) en un document coherent redactat amb \LaTeX.
 \end{itemize}
 
-La implementació en Python d’aquesta fórmula al meu programa és la següent:
+Aquest procés iteratiu ha permès detectar errors i millorar el projecte de manera constant, apropant-lo progressivament als objectius establerts.
 
-\begin{verbatim}
-def haversine(lat1, lon1, lat2, lon2):
-    R = 6371000  # radi de la Terra en metres
-    phi1, phi2 = radians(lat1), radians(lat2)
-    dphi = radians(lat2 - lat1)
-    dlambda = radians(lon2 - lon1)
+\section{Reproductibilitat i transparència}
 
-    a = sin(dphi/2)**2 + cos(phi1)*cos(phi2)*sin(dlambda/2)**2
-    c = 2 * atan2(sqrt(a), sqrt(1-a))
-
-    return R * c
-\end{verbatim}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{imatges/haversine.png}
-    \caption{Funció Haversine implementada al programa.}
-    \label{fig:haversine}
-\end{figure}
-
-\subsection{Git i control de versions}
-
-Una altra eina fonamental en aquest projecte ha estat l’ús de \textbf{Git} com a sistema de control de versions.
-Git és una eina que permet enregistrar tots els canvis que es fan en un projecte de programació.
-Això vol dir que cada modificació del codi queda guardada en un historial, i és possible tornar enrere si alguna cosa falla, o comparar diferents versions del programa.
-
-Vaig decidir utilitzar Git perquè és una pràctica habitual en el món professional i perquè em donava més seguretat al treballar.
-En lloc de guardar moltes còpies del fitxer amb noms diferents (per exemple, \texttt{programa\_final\_v3.py}), amb Git puc tenir un repositori únic i un registre clar de cada canvi que faig.
-
-Al llarg del projecte he après a utilitzar les comandes més importants:
-\begin{itemize}
-    \item \texttt{git status} per comprovar l’estat del repositori i veure quins fitxers han canviat.
-    \item \texttt{git add} per preparar els fitxers que vull guardar.
-    \item \texttt{git commit-a} per enregistrar els canvis amb una descripció.
-    \item \texttt{git push} per pujar el repositori a GitHub i tenir-ne una còpia en línia.
-    \item \texttt{git pull} per baixar possibles canvis del repositori remot i sincronitzar-lo amb la meva còpia local.
-\end{itemize}
-
-A més, he creat un repositori a \textbf{GitHub}, una plataforma molt utilitzada per compartir codi.
-Això em permet no només tenir una còpia de seguretat del meu projecte, sinó també entendre com es podria treballar de manera col·laborativa amb altres programadors.
-
-El treball amb Git m’ha ensenyat que el control de versions és molt més que una eina tècnica: és una manera d’organitzar el projecte i de treballar de manera \textbf{professional}.
-En resum, gràcies a Git he après la importància de registrar els canvis, documentar-los i tenir el codi sempre disponible i protegit.
-
-\subsection{Conclusions i aprenentatges generals}
-
-Aquest projecte m’ha servit no només per crear un programa funcional, sinó sobretot per adquirir una gran quantitat de coneixements i habilitats que abans no tenia.
-Al principi em semblava que es tractava només de descarregar dades de dues plataformes i mostrar-les a l’usuari, però he descobert que darrere hi havia molts reptes tècnics i conceptuals.
-
-Pel que fa a la part tècnica, he après a:
-\begin{itemize}
-    \item Programar de manera més estructurada amb Python, utilitzant funcions, arguments i opcions a la línia de comandes.
-    \item Treballar amb \textbf{APIs} i entendre el format \textbf{JSON}, que és la base de la comunicació entre serveis d’Internet.
-    \item Aplicar fórmules matemàtiques reals, com la de \textbf{Haversine}, per resoldre problemes pràctics en programació.
-    \item Controlar les versions del projecte amb \textbf{Git} i aprendre bones pràctiques professionals de desenvolupament.
-    \item Utilitzar una \textbf{màquina virtual} per tenir un entorn segur, net i reproductible.
-    \item Redactar documentació amb \textbf{LaTeX i Kile}, aconseguint un resultat final molt més professional del que hauria estat amb un processador de text convencional.
-\end{itemize}
-
-Més enllà de la tècnica, aquest treball m’ha ensenyat també una manera diferent de pensar i d’organitzar-me.
-He après a investigar per la meva compta, a buscar documentació, a provar i equivocar-me, i sobretot a ser constant fins aconseguir el resultat esperat.
-Aquest procés m’ha donat confiança en les meves capacitats i m’ha fet adonar que puc afrontar reptes complexos si els divideixo en parts i avanço pas a pas.
-
-En conclusió, aquest projecte ha estat una experiència molt enriquidora.
-He après a programar millor, a utilitzar eines noves i a entendre millor el món de les dades i els serveis digitals.
-Però, sobretot, he après que la programació no és només escriure codi: és també \textbf{resoldre problemes, comunicar resultats i aprendre contínuament}.
+Finalment, tot el codi, la memòria i les dades derivades del treball es troben disponibles al repositori públic de GitHub. Això garanteix que qualsevol persona pugui reproduir els resultats, analitzar el procés seguit i fins i tot ampliar la feina realitzada. Aquesta aposta per la transparència i la compartició del coneixement connecta amb la filosofia de la recerca científica i reforça el valor del treball com a aportació dins l’àmbit de la mobilitat sostenible.

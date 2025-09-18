@@ -1,64 +1,92 @@
-\chapter{Resultats}
+\chapter{resultats}
 
-Un cop desenvolupat i executat el programa, vaig obtenir una sèrie de resultats que mostren l’estat de les estacions del Bicing en el moment de la consulta. En aquest apartat presento exemples concrets, taules amb dades i una anàlisi general del que es pot observar.
+\section{Visualització de resultats}
 
-\section{Exemple de sortida del programa}
-El primer resultat que s’obté és una llista de totes les estacions amb la seva informació bàsica: bicicletes lliures, espais lliures i canvis ràpids possibles. A continuació es mostra un fragment real de l’execució:
+A més de la sortida per terminal i l’exportació a CSV, vaig generar diverses figures per representar gràficament les dades obtingudes.
+Aquestes imatges ajuden a entendre millor la distribució de les estacions i els punts de possible connexió entre Bicing i AMBici.
+
+\subsection{Mapa de totes les estacions}
+
+A la Figura \ref{fig:map_estacions} es mostren totes les estacions detectades en temps real.
+Les estacions de \textbf{Bicing} apareixen en vermell, mentre que les d’\textbf{AMBici} es representen en blau.
+Es pot observar com el Bicing cobreix sobretot l’interior de Barcelona, mentre que l’AMBici es concentra a municipis de l’àrea metropolitana, com l’Hospitalet.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{imatges/map_estacions.png}
+  \caption{Distribució geogràfica de les estacions de Bicing (vermell) i AMBici (blau).}
+  \label{fig:map_estacions}
+\end{figure}
+
+\subsection{Mapa de punts de transbord}
+
+La Figura \ref{fig:map_transbords} mostra els punts de transbord detectats, és a dir, parelles d’estacions de Bicing i AMBici separades per menys de 250 metres.
+Les línies uneixen les estacions més properes entre si.
+En aquest mapa es veu clarament la zona de la \textbf{Riera Blanca}, on hi ha estacions de les dues xarxes molt a prop, però l’usuari no pot fer un trajecte continu.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{imatges/map_transbords.png}
+  \caption{Punts de transbord detectats (línies entre estacions Bicing i AMBici separades per menys de 250 m).}
+  \label{fig:map_transbords}
+\end{figure}
+
+\subsection{Comparativa de recursos}
+
+Finalment, a la Figura \ref{fig:compare_bicis} es mostra un gràfic de barres amb el total de bicicletes lliures, espais lliures i canvis ràpids en cada servei.
+Aquesta comparació permet veure diferències en capacitat entre les dues xarxes: el Bicing té un volum més gran d’estacions i bicicletes, mentre que l’AMBici té menys punts però ofereix també un nombre significatiu de canvis ràpids.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{imatges/compare_bicis.png}
+  \caption{Comparativa global de bicicletes lliures, espais lliures i canvis ràpids entre Bicing i AMBici.}
+  \end{figure}
+
+\subsection{Interpretació}
+
+Les tres figures confirmen les hipòtesis inicials del treball:
+\begin{itemize}
+    \item El Bicing i l’AMBici cobreixen territoris diferents, amb un punt crític de contacte a la Riera Blanca.
+    \item Existeixen diversos punts de transbord potencials, però no estan integrats en un mateix sistema.
+    \item Tot i la diferència de volum, els dos serveis ofereixen capacitats comparables pel que fa al nombre de canvis ràpids en relació amb la seva mida.
+\end{itemize}
+
+Aquestes visualitzacions aporten una visió més clara i intuïtiva del problema plantejat i mostren com la combinació de dades obertes i eines de programació pot ser útil per analitzar la mobilitat metropolitana.
+
+\section{Resum del programa final}
+Després d'executar el programa final i de generar les figures, disposem d'un conjunt de dades i visualitzacions que permeten:
+\begin{itemize}
+ \item Identificar les estacions amb més capacitat d'intercanvi immediat (indicador \emph{canvi ràpid}).
+ \item Localitzar punts de transbord de Bicing a AMBici (distància 250 m).
+ \item Comparar recursos totals (bicicletes, espais i canvis ràpids) entre ambdós serveis.
+ \item Obtenir un CSV amb totes les estacions per a anàlisis complementàries.
+\end{itemize}
+
+\section{Exemples d'execució i sortida esperada}
+Comandes d'exemple (terminal):
 
 \begin{verbatim}
-Estació: Gran Via - Marina
-   -> Bicis lliures: 5
-   -> Espais lliures: 7
-   -> Canvis ràpids possibles: 5
-----------------------------------------
-Estació: Passeig de Gràcia - Casp
-   -> Bicis lliures: 0
-   -> Espais lliures: 12
-   -> Canvis ràpids possibles: 0
-----------------------------------------
-Estació: Universitat - Pelai
-   -> Bicis lliures: 8
-   -> Espais lliures: 3
-   -> Canvis ràpids possibles: 3
-----------------------------------------
+# Mostrar top 10 estacions amb més canvi ràpid i transbords
+python programafinal.py --top 10 --sumari --transbord
+
+# Generar CSV amb totes les estacions
+python programafinal.py --output imatges/resum_estacions.csv
 \end{verbatim}
 
-Aquest fragment ja ens permet veure tres situacions diferents:
-\begin{itemize}
-    \item Estacions equilibrades (Gran Via - Marina), on hi ha prou bicis i espais.
-    \item Estacions saturades d’espais buits però sense bicicletes (Passeig de Gràcia - Casp).
-    \item Estacions amb moltes bicicletes però pocs espais (Universitat - Pelai).
-\end{itemize}
+Sortida d'exemple (resum de terminal):
 
-\section{Taula de resultats}
-Per fer més visual la informació, vaig resumir els resultats d’algunes estacions en una taula:
+\begin{verbatim}
+[Bicing] Gran Via - Marina
+   -> Bicis lliures: 15
+   -> Espais lliures: 12
+   -> Canvi ràpid possible: 12
+----------------------------------------
+Resum global
+   Estacions: 517
+   Bicis lliures totals: 4321
+   Espais lliures totals: 3897
+   Canvi ràpid total: 2765
 
-\begin{center}
-\begin{tabular}{|l|c|c|c|}
-\hline
-\textbf{Estació} & \textbf{Bicis lliures} & \textbf{Espais lliures} & \textbf{Canvis ràpids} \\
-\hline
-Gran Via - Marina & 5 & 7 & 5 \\
-Passeig de Gràcia - Casp & 0 & 12 & 0 \\
-Universitat - Pelai & 8 & 3 & 3 \\
-Plaça Espanya - Creu Coberta & 2 & 9 & 2 \\
-Arc de Triomf - Ribes & 6 & 6 & 6 \\
-\hline
-\end{tabular}
-\end{center}
-
-Aquesta taula mostra clarament com el nombre de canvis ràpids depèn del recurs més limitat: a la Universitat - Pelai són només 3 malgrat tenir 8 bicicletes disponibles, ja que només hi ha 3 espais lliures.
-
-\section{Anàlisi dels resultats}
-A partir de les dades obtingudes, es poden fer diverses observacions:
-\begin{itemize}
-    \item Hi ha estacions molt equilibrades, amb un nombre semblant de bicis i espais, que permeten un gran nombre de canvis ràpids.
-    \item Algunes estacions del centre tendeixen a tenir pocs espais lliures perquè hi ha molta demanda d’aparcar bicicletes.
-    \item Altres estacions, especialment en zones més allunyades, presenten l’efecte contrari: molts espais lliures i poques bicicletes.
-    \item El concepte de canvi ràpid resulta útil perquè resumeix la situació de cada estació en un sol número.
-\end{itemize}
-
-\section{Limitacions dels resultats}
-Cal tenir en compte que aquests resultats són d’un moment concret i poden variar molt segons l’hora del dia o el dia de la setmana. Per obtenir una anàlisi més profunda, caldria registrar dades durant més temps i observar-ne l’evolució.
-
-Tot i això, els exemples presentats demostren que el programa funciona correctament i és capaç de calcular els canvis ràpids a partir de les dades reals de l’API.
+Punts de transbord Bicing a AMBici:
+- Riera Blanca - Travessera de les Corts a Hospi\-talet - Coll\-blanc [185\ m]
+\end{verbatim}

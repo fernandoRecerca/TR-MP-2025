@@ -1,34 +1,42 @@
 \chapter{Objectius}
-Quan vaig començar a plantejar aquest treball de recerca, tenia molt clar que volia que tingués una part pràctica relacionada amb la programació i les dades reals. A partir d’aquí vaig definir una sèrie d’objectius que m’han servit per orientar tot el procés i que explico a continuació.
+\label{c:objectius}
 
-\section{Objectiu general}
-L’objectiu general del meu treball és \textbf{crear un programa en Python que utilitzi dades reals del servei Bicing de Barcelona per calcular els canvis ràpids possibles a cada estació}. Amb això no només vull aprendre a programar amb informació real sinó també entendre millor com funciona un sistema de mobilitat compartida i quines dificultats pot tenir en el dia a dia.
+El punt de partida d’aquest treball és la problemàtica detectada a la zona de la \textbf{Riera Blanca}, on les xarxes de bicicleta compartida \textbf{Bicing} i \textbf{AMBici} es troben molt a prop però no estan connectades. Davant d’aquesta situació, el repte plantejat ha estat dissenyar una eina capaç de facilitar el transbord entre serveis i oferir una visió integrada de les dues plataformes.
 
-\section{Objectius específics}
-Per arribar a l’objectiu principal, he definit diversos objectius més concrets:
-\begin{itemize}
-    \item Aprendre a utilitzar una API: entendre què és, com funciona i com es poden obtenir dades en temps real d’un servei públic com el Bicing.
-    \item Treballar amb el format JSON: aprendre a llegir i processar dades en aquest format, que és el més habitual en aplicacions modernes.
-    \item Programar amb Python: posar en pràctica coneixements de Python per llegir dades, recórrer-les i aplicar càlculs senzills.
-    \item Definir i calcular el concepte de ``canvi ràpid'': establir una mesura senzilla però útil que mostri en quines estacions hi ha tant bicicletes com espais disponibles.
-    \item Mostrar els resultats de manera clara: dissenyar una sortida de dades entenedora, amb informació de cada estació i els canvis ràpids possibles.
-    \item Analitzar els resultats obtinguts: reflexionar sobre el que ens diuen les dades, veure quines estacions estan equilibrades i quines no, i pensar com això afecta els usuaris.
-    \item Fer una memòria escrita completa: redactar tot el procés amb introducció, marc teòric, metodologia, resultats i conclusions, seguint el format d’un treball de recerca.
-\end{itemize}
+L’objectiu global és, per tant, crear una solució tecnològica que permeti identificar estacions properes, calcular punts de connexió òptims i presentar els resultats d’una manera clara i útil per a l’usuari. Aquest objectiu general es concreta en una sèrie de requisits que hem dividit segons la seva procedència: d’una banda, els establerts pel tutor; de l’altra, els que he proposat jo com a alumne.
 
-\section{Objectius personals}
-A més dels objectius estrictament tècnics, també m’he proposat objectius personals:
-\begin{itemize}
-    \item Millorar la meva organització i capacitat de treball a llarg termini.
-    \item Aprendre a resoldre problemes reals (errors de codi, connexió a la xarxa, interpretació de dades).
-    \item Apropar-me al món de la programació i de les dades obertes, que pot ser útil en estudis futurs.
-\end{itemize}
+\begin{enumerate}
+ \item Requisits proposats pel Tutor
+    \begin{enumerate}
+        \item \textbf{Entorn de treball professional}
 
-\section{Preguntes de recerca}
-Per guiar encara més el treball, també m’he plantejat algunes preguntes concretes que intentaré respondre amb el programa:
-\begin{itemize}
-    \item Quines estacions de Bicing permeten més canvis ràpids en un moment determinat?
-    \item Hi ha diferències entre estacions cèntriques i perifèriques?
-    \item Què passa quan una estació té moltes bicis però pocs espais, o a l’inrevés?
-    \item Podria aquest mètode ajudar a gestionar millor el servei?
-\end{itemize}
+        El projecte havia de dur-se a terme amb eines pròpies de l’àmbit acadèmic i de recerca: ús d’una màquina virtual amb sistema Linux, control de versions amb \texttt{git}, redacció amb \LaTeX\ i repositori públic a GitHub. Aquest enfocament s’explica amb més detall al capítol \ref{c:Metodologia}: \nameref{c:Metodologia}.
+
+        \item \textbf{Integració de serveis}
+
+        Calia implementar un sistema que combinés dades de Bicing i AMBici, identificant estacions properes i punts de transbord dins d’un radi de 250 metres.
+
+        \item \textbf{Simplicitat i eficiència}
+
+        El tutor va remarcar la importància de crear una eina clara i senzilla d’utilitzar, capaç de processar grans quantitats de dades en temps real sense perdre rendiment.
+
+        \item \textbf{Reproductibilitat}
+
+        Era imprescindible que el treball fos replicable en altres entorns, de manera que qualsevol persona pogués descarregar el repositori i repetir els resultats.
+    \end{enumerate}
+
+ \item Requisits proposats per l’alumne
+    \begin{enumerate}
+        \item \textbf{Automatització completa}
+
+        Vaig decidir que l’eina havia de funcionar de manera automàtica: amb una sola ordre, obtenir les dades, processar-les i generar sortides sense haver de fer passos manuals.
+
+        \item \textbf{Visualització intuïtiva}
+
+        Un dels meus objectius ha estat incloure mapes i gràfics que mostressin de forma clara la distribució d’estacions i els punts de transbord, fent els resultats accessibles també a persones sense coneixements tècnics.
+
+        \item \textbf{Anàlisi complementària}
+
+        He afegit mètriques addicionals, com el nombre de bicicletes lliures, els espais disponibles i el potencial de canvi ràpid, per aportar un estudi més complet i útil de les diferències entre ambdós serveis.
+    \end{enumerate}
+\end{enumerate}

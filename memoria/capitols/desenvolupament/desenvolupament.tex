@@ -1,85 +1,44 @@
-\chapter{Desenvolupament del programa}
+\chapter{Desenvolupament del projecte}
 
-Un cop definida la metodologia, vaig passar a la part pràctica del treball: el desenvolupament del programa en Python. Aquesta secció descriu com està construït el codi, quines llibreries he fet servir i com es processen les dades fins a obtenir el resultat final.
+El procés de creació del programa no va ser lineal, sinó que es va anar construint pas a pas, a partir de petites proves que em van permetre entendre com funcionaven les dades i com les podia utilitzar.
+Aquest apartat recull l’evolució del projecte abans d’arribar al programa final.
 
-\section{Estructura general}
-El programa segueix una estructura senzilla però efectiva:
-\begin{enumerate}
-    \item Connectar-se a la font de dades oberta (API de CityBikes).
-    \item Rebre les dades en format JSON.
-    \item Recórrer totes les estacions i obtenir el nombre de bicicletes i d'espais lliures.
-    \item Calcular el nombre de canvis ràpids possibles a cada estació.
-    \item Mostrar els resultats de manera clara i entenedora per pantalla.
-\end{enumerate}
+\section{Primers tests amb dades reals}
 
-\section{Llibreries utilitzades}
-He utilitzat principalment la llibreria \texttt{requests}, que permet fer peticions HTTP a servidors web i obtenir-ne les respostes. També he fet servir la llibreria \texttt{json}, que ve inclosa amb Python i serveix per treballar amb aquest format de dades.
+El primer objectiu va ser comprovar si era possible connectar-me a les APIs de Bicing i AMBici i obtenir-ne informació en temps real.
+Per això vaig fer dos programes senzills:
 
-Aquestes llibreries són molt utilitzades en el món de la programació i m’han permès simplificar molt la feina.
+\subsection{Prova amb AMBici: \texttt{cercaJson.py}}
 
-\section{Connexió amb l’API}
-Per obtenir les dades he fet una crida a la URL següent:
+En aquest programa vaig treballar amb l’API de l’AMBici, que segueix l’estàndard \textbf{GBFS}.
+A partir de dues crides diferents (\texttt{station\_information.json} i \texttt{station\_status.json}), vaig poder descarregar informació de totes les estacions i mostrar-la per pantalla: identificador, bicicletes lliures i espais disponibles.
 
-\begin{verbatim}
-url = "https://api.citybik.es/v2/networks/bicing"
-response = requests.get(url)
-\end{verbatim}
+Aquesta primera prova em va servir per entendre el format \textbf{JSON} i per comprovar que podia accedir correctament a les dades de la xarxa metropolitana.
 
-Aquesta línia estableix la connexió i descarrega el contingut. Tot seguit, comprovo que la resposta sigui correcta i converteixo les dades en un objecte JSON:
+\subsection{Prova amb Bicing: \texttt{provabicing.py}}
 
-\begin{verbatim}
-if response.status_code != 200:
-    print("Error en la connexió:", response.status_code)
-    exit()
+Un cop validada la connexió amb AMBici, vaig fer el mateix amb Bicing.
+En aquest cas vaig utilitzar l’API pública de \textbf{CityBikes}, que centralitza dades de moltes ciutats.
+El programa extreia la llista d’estacions i en mostrava el nom, les bicicletes lliures i els espais lliures.
 
-data = response.json()
-\end{verbatim}
+Aquest pas em va permetre comparar els dos serveis i comprovar que, tot i utilitzar APIs diferents, podia obtenir informació equivalent en ambdós casos.
 
-\section{Recorregut de les estacions}
-Les estacions estan guardades dins de \texttt{data["network"]["stations"]}. Per cada estació puc consultar valors com el nom, les bicicletes lliures i els espais disponibles.
+\section{Definició del concepte de canvi ràpid}
 
-\begin{verbatim}
-for station in data["network"]["stations"]:
-    bicis = station["free_bikes"]
-    espais = station["empty_slots"]
-\end{verbatim}
+Després d’aconseguir les dades bàsiques, vaig voler afegir un indicador propi que fos útil per entendre l’estat de cada estació.
+Així va sorgir el concepte de \textbf{canvi ràpid}, definit com el mínim entre bicicletes lliures i espais disponibles.
 
-\section{Càlcul del canvi ràpid}
-El canvi ràpid s’ha definit com el mínim entre les bicicletes lliures i els espais disponibles. Això s’implementa amb la funció \texttt{min} de Python:
+\subsection{\texttt{canvirapid.py}}
 
-\begin{verbatim}
-canvi_rapid = min(bicis, espais)
-\end{verbatim}
+En aquest programa vaig aplicar la idea de canvi ràpid al Bicing.
+Per a cada estació es calculava aquest valor i es mostrava per pantalla juntament amb la resta d’informació.
 
-D’aquesta manera, si una estació té 5 bicis i 7 espais, els canvis ràpids possibles són 5. Si té 0 bicis i 12 espais, el resultat és 0.
+El concepte és senzill, però molt pràctic: indica quants usuaris podrien intercanviar bicicleta i aparcament al mateix temps sense problemes.
+D’aquesta manera es poden identificar les estacions més equilibrades i les que poden generar més inconvenients.
 
-\section{Sortida de resultats}
-Per fer més entenedora la informació, el programa mostra per pantalla les dades amb un format clar:
+\section{Cap a la integració dels sistemes}
 
-\begin{verbatim}
-print("Estació:", station["name"])
-print("   -> Bicis lliures:", bicis)
-print("   -> Espais lliures:", espais)
-print("   -> Canvis ràpids possibles:", canvi_rapid)
-print("-" * 40)
-\end{verbatim}
+Aquests programes inicials van ser fonamentals per entendre com funcionaven les dues xarxes i per establir les bases del projecte.
+Primer vaig comprovar que podia connectar-me a les APIs i llegir les dades, i després vaig començar a aplicar-hi càlculs propis.
 
-La sortida és fàcil de llegir i permet veure ràpidament l’estat de cada estació.
-
-\section{Exemple de funcionament}
-Quan s’executa el programa, es pot obtenir una sortida similar a la següent:
-
-\begin{verbatim}
-Estació: Gran Via - Marina
-   -> Bicis lliures: 5
-   -> Espais lliures: 7
-   -> Canvis ràpids possibles: 5
-----------------------------------------
-Estació: Passeig de Gràcia - Casp
-   -> Bicis lliures: 0
-   -> Espais lliures: 12
-   -> Canvis ràpids possibles: 0
-----------------------------------------
-\end{verbatim}
-
-Aquest exemple mostra com el programa processa correctament la informació i calcula els canvis ràpids a partir de les dades reals proporcionades per l’API.
+El següent pas, que es recull a l’apartat de \textbf{Resultats}, va ser combinar tota aquesta feina en un programa més complet capaç d’integrar Bicing i AMBici, aplicar filtres, calcular punts de transbord i exportar resultats.

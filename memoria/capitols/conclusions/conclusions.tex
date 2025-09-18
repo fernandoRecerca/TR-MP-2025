@@ -1,2 +1,42 @@
-\chapter{Conclusions}
+\chapter{Conclusions i recomanacions}
+
+\section{Conclusions generals}
+Aquest treball de recerca ha tingut com a punt de partida un problema real de mobilitat: la manca de connexió entre les xarxes de bicicleta compartida \textbf{Bicing} (Barcelona) i \textbf{AMBici} (l’Hospitalet i municipis propers).
+Tot i que són serveis independents, la meva feina ha estat \textbf{connectar-los digitalment} mitjançant un programa que integra les seves dades en temps real, calcula indicadors útils i detecta punts de transbord.
+
+Els resultats mostren que:
+\begin{itemize}
+    \item És possible obtenir i combinar dades de dues APIs diferents (CityBikes i GBFS) en un sol programa funcional.
+    \item L’indicador \textbf{canvi ràpid} és senzill però molt útil per avaluar la capacitat real d’una estació: indica en quina mesura pot absorbir usuaris que arriben i surten alhora.
+    \item Hi ha punts físics on les dues xarxes gairebé es toquen, com a la \textbf{Riera Blanca}, però no existeix una continuïtat de servei per a l’usuari.
+    \item L’anàlisi comparativa mostra que el Bicing disposa de més estacions i bicicletes, però que l’AMBici té també una presència rellevant i complementària en l’àrea metropolitana.
+\end{itemize}
+
+A més dels aspectes tècnics, aquest projecte m’ha permès aprendre a treballar amb \textbf{Python}, \textbf{APIs}, \textbf{Git}, \textbf{Linux} i \textbf{LaTeX}, adaptant-me a eines pròpies del món universitari i professional.
+El procés d’\textbf{aprendre fent} ha estat essencial: he hagut de resoldre errors, buscar documentació, provar diferents solucions i finalment aconseguir un producte robust.
+Aquest aprenentatge transversal és una de les parts més valuoses del treball.
+
+\section{Limitacions}
+Tot i els resultats positius, el projecte té algunes limitacions:
+\begin{itemize}
+    \item Les dades són en temps real, però només representen una instantània i canvien constantment.
+    \item El càlcul de distàncies utilitza la fórmula de \textbf{Haversine}, que no té en compte la xarxa viària real ni els obstacles per a vianants.
+    \item L’anàlisi no inclou dades de demanda (quins trajectes fan els usuaris), sinó només l’oferta de bicicletes i espais.
+    \item El programa depèn de la disponibilitat i estabilitat de les APIs públiques.
+\end{itemize}
+
+\section{Recomanacions}
+A partir dels resultats obtinguts, es poden fer diverses recomanacions:
+\begin{itemize}
+    \item \textbf{Prova pilot d’integració:} establir un punt d’intercanvi senyalitzat a la Riera Blanca, on les dues xarxes ja tenen estacions molt properes.
+    \item \textbf{API unificada:} promoure la creació d’un portal conjunt de dades obertes que faciliti la interoperabilitat entre Bicing i AMBici.
+    \item \textbf{Estacions mixtes:} dissenyar en el futur estacions que donin servei tant a bicicletes de Bicing com d’AMBici.
+    \item \textbf{Anàlisi temporal:} recollir dades durant diversos dies o setmanes per detectar patrons horaris i optimitzar la reposició de bicicletes.
+\end{itemize}
+
+\section{Tancament personal}
+El treball m’ha demostrat que la programació no és només escriure codi, sinó també \textbf{plantejar-se preguntes, analitzar dades i comunicar resultats}.
+He après que puc adaptar-me a eines avançades (Linux, Git, LaTeX) i superar reptes tècnics amb constància.
+En definitiva, aquest projecte ha estat una experiència enriquidora que m’ha apropat al món universitari i m’ha donat confiança per afrontar estudis futurs relacionats amb la programació, les matemàtiques i la ciència de dades.
+
 \label{c:conclusions}

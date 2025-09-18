@@ -1,26 +1,24 @@
 \chapter{Recerca prèvia}
 
-Abans de començar a programar i a fer proves amb dades reals, vaig dedicar temps a informar-me sobre el context del meu treball. Aquesta recerca prèvia m’ha servit per entendre millor de què estava parlant i quins coneixements necessitava adquirir.
+Abans de començar a programar i a fer proves amb dades reals, vaig dedicar temps a informar-me sobre el context del meu treball. Aquesta recerca prèvia m’ha servit per entendre millor el funcionament dels serveis de bicicleta compartida i el paper que poden tenir dins la mobilitat sostenible.
 
 \section{El Bicing i la mobilitat urbana}
-El Bicing és un servei públic de bicicletes compartides que va aparèixer a Barcelona l’any 2007. Des d’aleshores s’ha convertit en un element molt important de la mobilitat de la ciutat. El seu objectiu és reduir l’ús del cotxe i fomentar un transport més sostenible. Actualment el sistema disposa de centenars d’estacions i milers de bicicletes, tant mecàniques com elèctriques.
+El \textbf{Bicing} és el sistema de bicicletes compartides de Barcelona, creat l’any 2007. Des de llavors s’ha convertit en un element habitual de la ciutat: milers de persones l’utilitzen cada dia per desplaçar-se de manera ràpida i sense contaminació. El seu objectiu és reduir l’ús del cotxe i oferir una alternativa més sana i respectuosa amb el medi ambient. Avui en dia compta amb centenars d’estacions i bicicletes, tant mecàniques com elèctriques.
 
-Un dels aspectes més interessants del Bicing és que funciona amb tecnologia digital: cada estació està connectada i envia informació constant sobre el nombre de bicicletes i els espais lliures. Això permet als usuaris consultar l’estat de les estacions en temps real des del mòbil.
+Un aspecte destacable és que el servei és digital: les estacions informen en temps real de quantes bicicletes hi ha disponibles i quants espais lliures queden. Això permet que els usuaris puguin consultar l’estat des del mòbil abans d’anar-hi.
 
-\subsection{El concepte de dades obertes}
-En la meva recerca vaig descobrir que moltes ciutats publiquen informació oberta sobre els seus serveis. Aquest concepte s’anomena \textit{open data} i consisteix a posar a disposició de tothom dades que poden ser útils per a estudis, investigacions o aplicacions.
+\section{El concepte de dades obertes}
+Moltes ciutats, inclosa Barcelona, comparteixen informació dels seus serveis amb la ciutadania. Aquest concepte rep el nom de \textit{dades obertes} (\textit{open data}) i consisteix a posar a l’abast de tothom informació que pot ser útil per fer estudis, aplicacions o projectes de recerca.
 
-En el cas del Bicing, la informació de les estacions es pot consultar mitjançant una API oberta. Això vol dir que qualsevol persona pot programar un codi que es connecti a internet i descarregui l’estat actualitzat del servei.
+En el cas del Bicing, aquestes dades es poden consultar a través d’un mecanisme senzill i públic: una API oberta. Gràcies a això, qualsevol persona amb coneixements de programació pot descarregar-se l’estat de les estacions i treballar-hi.
 
 \section{Què és una API?}
-API són les sigles de \textit{Application Programming Interface}. En termes senzills, és una manera que tenen diferents programes de comunicar-se entre ells. En lloc d’accedir directament a la base de dades del Bicing, els programadors utilitzen l’API, que és una mena de porta d’entrada segura i estructurada.
+Una \textbf{API} (sigles d’\textit{Application Programming Interface}) és, en paraules simples, com una porta d’entrada que permet a dos programes parlar entre ells. En lloc de mirar directament dins la base de dades del Bicing, els programadors demanen la informació a través d’aquesta “porta”. L’API respon amb un paquet de dades que conté la informació actualitzada de les estacions.
 
-Quan un programa com el meu fa una petició a l’API, rep un paquet de dades amb informació actualitzada. Aquest paquet normalment està en format JSON.
+Això fa que sigui fàcil i segur utilitzar aquestes dades sense necessitat de conèixer els detalls tècnics interns del sistema.
 
 \section{El format JSON}
-JSON vol dir \textit{JavaScript Object Notation}. És un format molt utilitzat perquè és lleuger, fàcil de llegir i entenedor tant per màquines com per persones. S’assembla a una llista de claus i valors, com si fos un diccionari en Python.
-
-Per exemple, una estació de Bicing pot aparèixer en JSON així:
+Les dades que s’obtenen de l’API del Bicing es presenten en \textbf{format JSON}, unes sigles que volen dir \textit{JavaScript Object Notation}. Aquest format és com una llista de parelles \emph{clau–valor}. Per exemple, una estació pot aparèixer així:
 
 \begin{verbatim}
 {
@@ -30,14 +28,14 @@ Per exemple, una estació de Bicing pot aparèixer en JSON així:
 }
 \end{verbatim}
 
-A partir d’aquesta informació, el meu programa pot calcular fàcilment els canvis ràpids que es poden fer.
+En aquest cas veiem que l’estació “Gran Via - Marina” té 5 bicicletes disponibles i 7 espais lliures. Aquest format és molt comú perquè és fàcil de llegir i d’entendre, tant per les persones com pels ordinadors.
 
 \section{El llenguatge Python}
-Per a la part pràctica vaig triar Python perquè és un llenguatge que ja coneixia una mica i que es fa servir molt en el món de la ciència de dades. Python té biblioteques molt útils, com \texttt{requests} per connectar-se a APIs, o \texttt{json} per treballar amb dades en aquest format.
+Per desenvolupar el meu projecte vaig escollir \textbf{Python}, un llenguatge de programació molt utilitzat en l’àmbit de la ciència de dades i que té l’avantatge de ser entenedor i senzill. Gràcies a biblioteques com \texttt{requests} (per descarregar dades d’una API) o \texttt{json} (per treballar amb el format de les dades), vaig poder construir el codi necessari sense complicacions excessives.
 
-Una altra avantatge és que és fàcil d’entendre i de llegir, fins i tot per persones que no són expertes en programació. Això em permetia explicar millor el codi dins del treball.
+Un altre avantatge de Python és que el seu codi es pot llegir amb facilitat, fins i tot per persones que no són expertes. Això facilita molt l’explicació del treball.
 
 \section{Mobilitat sostenible}
-Finalment, vaig voler documentar-me sobre la importància de la mobilitat sostenible. El transport és una de les principals fonts de contaminació a les ciutats. Per això, els serveis com el Bicing tenen un paper clau: permeten reduir emissions i també milloren la salut de les persones, ja que promouen l’activitat física.
+La part final de la recerca prèvia va consistir en contextualitzar la importància d’aquest tema. El transport és una de les principals fonts de contaminació a les ciutats, i serveis com el Bicing contribueixen a reduir emissions i fomentar hàbits saludables.
 
-A més, Barcelona és una de les ciutats que més aposta per la bicicleta, amb carrils bici que cada any augmenten. Tot això fa que el meu treball no sigui només tècnic sinó també socialment rellevant.
+Barcelona, a més, és una ciutat que aposta fort per la bicicleta: cada any s’amplien els carrils bici i es potencien mesures per animar la ciutadania a pedalar. Això fa que aquest treball no sigui només una experiència tècnica, sinó també una contribució dins un repte social de gran actualitat: la mobilitat sostenible.
