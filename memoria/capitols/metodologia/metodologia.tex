@@ -42,6 +42,26 @@ El projecte no s’ha desenvolupat de manera lineal, sinó seguint un cicle iter
 
 Aquest procés iteratiu ha permès detectar errors i millorar el projecte de manera constant, apropant-lo progressivament als objectius establerts.
 
+\section{Desenvolupament d'una aplicació web}
+
+Per facilitar la interacció amb el programa i fer-lo accessible sense necessitat
+d’utilitzar el terminal, vaig desenvolupar una pàgina web amb la llibreria
+\textbf{Streamlit}\cite{streamlit} de Python. Aquesta eina permet convertir un script en una
+aplicació web interactiva de manera senzilla i ràpida.
+
+A la interfície, l’usuari pot:
+\begin{itemize}
+    \item Seleccionar el nombre d’estacions TOP a mostrar.
+    \item Activar o desactivar opcions com el resum global o la detecció de punts de transbord.
+    \item Executar el programa i visualitzar-ne la sortida directament al navegador.
+    \item Consultar les figures generades (mapa d’estacions, punts de transbord i comparativa de recursos).
+    \item Descarregar el fitxer \texttt{CSV} amb el resum de totes les estacions.
+\end{itemize}
+
+Aquesta solució amplia la reproductibilitat del treball i fa possible que qualsevol persona
+pugui consultar els resultats sense coneixements tècnics de programació.
+
+
 \section{Reproductibilitat i transparència}
 
 Finalment, tot el codi, la memòria i les dades derivades del treball es troben disponibles al repositori públic de GitHub. Això garanteix que qualsevol persona pugui reproduir els resultats, analitzar el procés seguit i fins i tot ampliar la feina realitzada. Aquesta aposta per la transparència i la compartició del coneixement connecta amb la filosofia de la recerca científica i reforça el valor del treball com a aportació dins l’àmbit de la mobilitat sostenible.
