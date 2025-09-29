@@ -14,12 +14,12 @@ Moltes ciutats, inclosa Barcelona, comparteixen informació dels seus serveis am
 En el cas del Bicing, aquestes dades es poden consultar a través d’un mecanisme senzill i públic: una API oberta. Gràcies a això, qualsevol persona amb coneixements de programació pot descarregar-se l’estat de les estacions i treballar-hi.
 
 \section{Què és una API?}
-Una \textbf{API}\cite{api-def} (sigles d’\textit{Application Programming Interface}) és, en paraules simples, com una porta d’entrada que permet a dos programes parlar entre ells. En lloc de mirar directament dins la base de dades del Bicing, els programadors demanen la informació a través d’aquesta “porta”. L’API respon amb un paquet de dades que conté la informació actualitzada de les estacions.
+Una \textbf{API}~\cite{api-def} (sigles d’\textit{Application Programming Interface}) és, en paraules simples, com una porta d’entrada que permet a dos programes parlar entre ells. En lloc de mirar directament dins la base de dades del Bicing, els programadors demanen la informació a través d’aquesta “porta”. L’API respon amb un paquet de dades que conté la informació actualitzada de les estacions.
 
 Això fa que sigui fàcil i segur utilitzar aquestes dades sense necessitat de conèixer els detalls tècnics interns del sistema.
 
 \section{El format JSON}
-Les dades que s’obtenen de l’API del Bicing es presenten en \textbf{format JSON}\cite{json-org}, unes sigles que volen dir \textit{JavaScript Object Notation}. Aquest format és com una llista de parelles \emph{clau–valor}. Per exemple, una estació pot aparèixer així:
+Les dades que s’obtenen de l’API del Bicing es presenten en \textbf{format JSON}~\cite{json-org}, unes sigles que volen dir \textit{JavaScript Object Notation}. Aquest format és com una llista de parelles \emph{clau–valor}. Per exemple, una estació pot aparèixer així:
 
 \begin{verbatim}
 {
@@ -32,7 +32,8 @@ Les dades que s’obtenen de l’API del Bicing es presenten en \textbf{format J
 En aquest cas veiem que l’estació “Gran Via - Marina” té 5 bicicletes disponibles i 7 espais lliures. Aquest format és molt comú perquè és fàcil de llegir i d’entendre, tant per les persones com pels ordinadors.
 
 \section{El llenguatge Python}
-Per desenvolupar el meu projecte vaig escollir \textbf{Python}\cite{python-docs}, un llenguatge de programació molt utilitzat en l’àmbit de la ciència de dades i que té l’avantatge de ser entenedor i senzill. Gràcies a biblioteques com \texttt{requests} (per descarregar dades d’una API) o \texttt{json} (per treballar amb el format de les dades), vaig poder construir el codi necessari sense complicacions excessives.
+Per desenvolupar el meu projecte vaig escollir \textbf{Python}~\cite{python-docs}, un llenguatge de programació molt utilitzat en l’àmbit de la ciència de dades i que té l’avantatge de ser entenedor i senzill. Gràcies a biblioteques com \texttt{requests} (per descarregar dades d’una API) o \texttt{json} (per treballar amb el format de les dades), vaig poder construir el codi necessari.
+% sense complicacions excessives.
 
 Un altre avantatge de Python és que el seu codi es pot llegir amb facilitat, fins i tot per persones que no són expertes. Això facilita molt l’explicació del treball.
 
