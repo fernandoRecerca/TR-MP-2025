@@ -1,47 +1,66 @@
 \chapter{Objectius}
 \label{c:objectius}
 
-El punt de partida d’aquest treball és la problemàtica detectada a la zona de la \textbf{Riera Blanca}~\cite{riera-blanca}, on les xarxes de bicicleta compartida \textbf{Bicing} i \textbf{AMBici} es troben molt a prop però no estan connectades. Davant d’aquesta situació, el repte plantejat ha estat dissenyar una eina capaç de facilitar el transbord entre serveis i oferir una visió integrada de les dues plataformes.
+Aquest treball de recerca neix a partir de la proposta dels professors universitaris de matemàtiques
+\textbf{Gerard} i \textbf{David}, que em van suggerir la temàtica i em van orientar
+sobre les primeres fonts d’informació a consultar. A partir d’aquesta idea inicial, i amb l’acompanyament
+del meu tutor \textbf{Fernando}, es va definir la problemàtica de la zona de la \textbf{Riera Blanca}~\cite{riera-blanca},
+on les xarxes de bicicleta compartida \textbf{Bicing} i \textbf{AMBici} es troben molt a prop però no estan connectades.
 
-L’objectiu global és, per tant, crear una solució tecnològica que permeti identificar estacions properes, calcular punts de connexió òptims i presentar els resultats d’una manera clara i útil per a l’usuari. Aquest objectiu general es concreta en una sèrie de requisits que hem dividit segons la seva procedència: d’una banda, els establerts pel tutor; de l’altra, els que he proposat jo com a alumne.
+Davant d’aquesta situació, el repte plantejat ha estat dissenyar una eina capaç de facilitar el transbord
+entre serveis i oferir una visió integrada de les dues plataformes.
+
+L’objectiu global és, per tant, crear una solució tecnològica que permeti identificar estacions properes,
+calcular punts de connexió òptims i presentar els resultats d’una manera clara i útil per a l’usuari.
+Aquest objectiu general es concreta en una sèrie de requisits que hem dividit segons la seva procedència:
+d’una banda, els establerts pel tutor; de l’altra, els que he proposat jo com a alumne.
 
 \begin{enumerate}
  \item Requisits proposats pel Tutor
     \begin{enumerate}
         \item \textbf{Entorn de treball professional}
 
-        El projecte havia de dur-se a terme amb eines pròpies de l’àmbit acadèmic i de recerca: ús del sistema operatiu Linux, control de versions amb \texttt{git}, redacció amb \LaTeX\ i repositori públic a GitHub. Aquest enfocament s’explica amb més detall al capítol~\ref{c:metodologia}:~\nameref{c:metodologia}.
+        El projecte havia de dur-se a terme amb eines pròpies de l’àmbit acadèmic i de recerca:
+        ús del sistema operatiu Linux, control de versions amb \texttt{git},
+        redacció amb \LaTeX i repositori públic a GitHub.
+        Aquest enfocament s’explica amb més detall al capítol~\ref{c:metodologia}:~\nameref{c:metodologia}.
 
         \item \textbf{Integració de serveis}
 
-        Calia implementar un sistema que combinés dades de Bicing i AMBici, identificant estacions properes i punts de transbord dins d’un radi de 250 metres.
+        Calia implementar un sistema que combinés dades de Bicing i AMBici,
+        identificant estacions properes i punts de transbord dins d’un radi de 250 metres.
 
         \item \textbf{Simplicitat i eficiència}
 
-        El tutor va remarcar la importància de crear una eina clara i senzilla d’utilitzar, capaç de processar grans quantitats de dades en temps real sense perdre rendiment.
+        El tutor va remarcar la importància de crear una eina clara i senzilla d’utilitzar,
+        capaç de processar grans quantitats de dades en temps real sense perdre rendiment.
 
         \item \textbf{Traçabilitat}
 
-        Era imprescindible que el treball fos replicable en altres entorns, de manera que qualsevol persona pogués descarregar el repositori i repetir els resultats, així com seguir el procés de creació de tot el TR.
+        Era imprescindible que el treball fos replicable en altres entorns, de manera que qualsevol persona
+        pogués descarregar el repositori i repetir els resultats, així com seguir el procés de creació de tot el TR.
 
         \item \textbf{Llibertat}
 
-        Tot el treball ha estat elaborat amb una llicència de codi lliure que permet a qualsevol usuari la llibertat per utilitzar i modificar el codi font dels programes i de la memòria.
-
+        Tot el treball ha estat elaborat amb una llicència de codi lliure~\cite{GNU-ca} que permet a qualsevol usuari
+        la llibertat per utilitzar i modificar el codi font dels programes i de la memòria.
     \end{enumerate}
 
  \item Requisits proposats per l’alumne
     \begin{enumerate}
         \item \textbf{Automatització completa}
 
-        Vaig decidir que l’eina havia de funcionar de manera automàtica: amb una sola ordre, obtenir les dades, processar-les i generar sortides sense haver de fer passos manuals.
+        Vaig decidir que l’eina havia de funcionar de manera automàtica: amb una sola ordre, obtenir les dades,
+        processar-les i generar sortides sense haver de fer passos manuals.
 
         \item \textbf{Visualització intuïtiva}
 
-        Un dels meus objectius ha estat incloure mapes i gràfics que mostressin de forma clara la distribució d’estacions i els punts de transbord, fent els resultats accessibles també a persones sense coneixements tècnics.
+        Un dels meus objectius ha estat incloure mapes i gràfics que mostressin de forma clara la distribució
+        d’estacions i els punts de transbord, fent els resultats accessibles també a persones sense coneixements tècnics.
 
         \item \textbf{Anàlisi complementària}
 
-        He afegit mètriques addicionals, com el nombre de bicicletes lliures, els espais disponibles i el potencial de canvi ràpid, per aportar un estudi més complet i útil de les diferències entre ambdós serveis.
+        He afegit mètriques addicionals, com el nombre de bicicletes lliures, els espais disponibles i
+        el potencial de canvi ràpid, per aportar un estudi més complet i útil de les diferències entre ambdós serveis.
     \end{enumerate}
 \end{enumerate}
