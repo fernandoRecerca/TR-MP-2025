@@ -5,15 +5,68 @@ La realització d’aquest treball ha requerit combinar diferents eines i metodo
 
 \section{Entorn de treball}
 
-Per garantir un entorn estable i controlat vaig optar per treballar dins d’una \textbf{màquina virtual}. Aquesta elecció respon a la necessitat de separar el desenvolupament del projecte del sistema operatiu principal, evitant problemes de compatibilitat i assegurant que tot el programari necessari estigués perfectament configurat. A la màquina virtual vaig instal·lar una distribució de Linux, que em va permetre tenir accés a les eines habituals de programació i alhora a gestors de paquets que faciliten la instal·lació de biblioteques. Treballar d’aquesta manera també em dóna la possibilitat d’exportar i replicar l’entorn complet en altres ordinadors, mantenint la coherència del projecte.
+Per garantir un entorn estable i controlat vaig optar per treballar dins d’una \textbf{màquina virtual}. Aquesta elecció respon a la necessitat de separar el desenvolupament del projecte del sistema operatiu principal, evitant problemes de compatibilitat i assegurant que tot el programari necessari estigués perfectament configurat. A la màquina virtual vaig instal·lar una distribució de Linux, que em va permetre tenir accés a les eines habituals de programació i alhora a gestors de paquets que faciliten la instal·lació de biblioteques. Treballar d’aquesta manera també em dóna la possibilitat d’exportar i replicar l’entorn complet en altres ordinadors, mantenint la coherència del projecte i replicar l’entorn complet en altres ordinadors.
+
+A més, aquesta configuració m’ha permès experimentar amb confiança: podia provar noves biblioteques o actualitzacions sense por de trencar el sistema principal.
+En cas que alguna prova fallés, sempre tenia l’opció de tornar a un estat anterior de la màquina virtual, recuperant un entorn estable en pocs minuts.
+Aquest mecanisme, conegut com a \emph{punt de restauració} o \emph{snapshot}, consisteix a guardar una còpia exacta de la màquina en un moment concret.
+D’aquesta manera, el procés de desenvolupament ha estat més segur i flexible, ja que podia avançar amb iteracions ràpides i, alhora, assegurar la continuïtat del projecte.
+
+Treballar amb una màquina virtual també m’ha ajudat a entendre millor la importància de la gestió d’entorns en projectes de programari.
+No es tracta només de fer que el codi funcioni en el meu ordinador, sinó de garantir que qualsevol altra persona pugui reproduir exactament els mateixos resultats. Per aconseguir-ho, vaig documentar totes les versions de les biblioteques utilitzades i vaig crear un fitxer de requisits amb les dependències del projecte. Això assegura que, en reinstal·lar l’entorn en una altra màquina, es pugui obtenir el mateix comportament i evitar errors derivats de diferències de configuració. Aquest aprenentatge ha estat clau per entendre com es treballa en recerca i en desenvolupament professional, on la coherència i la reproductibilitat són essencials.
 
 \section{Redacció i composició del text}
 
-La memòria s’ha redactat íntegrament amb \LaTeX, utilitzant l’editor \textbf{Kile}\cite{kile}. Aquesta eina proporciona una interfície amigable per treballar amb documents científics, permet dividir el treball en capítols i seccions, i ofereix eines per compilar ràpidament a PDF. L’ús de \LaTeX\ ha estat clau per mantenir una presentació professional del text, gestionar cites i bibliografia i incloure figures, taules i fórmules sense dificultats. A més, la redacció en \LaTeX\ facilita la traçabilitat dels canvis, ja que el codi font del document es pot gestionar igual que el codi d’un programa.
+La memòria s’ha redactat íntegrament amb \LaTeX, utilitzant l’editor \textbf{Kile}\cite{kile}.
+Aquesta eina proporciona una interfície amigable per treballar amb documents científics, permet dividir el treball en capítols i seccions, i ofereix eines per compilar ràpidament a PDF.
+L’ús de \LaTeX\ ha estat clau per mantenir una presentació professional del text, gestionar cites i bibliografia i incloure figures, taules i fórmules sense dificultats.
+A més, la redacció en \LaTeX\ facilita la traçabilitat dels canvis, ja que el codi font del document es pot gestionar igual que el codi d’un programa.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{./imatges/memoriaLatex.png}
+  \caption{Entorn de redacció de la memòria amb \LaTeX\ i l’editor Kile.}
+  \label{fig:memoriaLatex}
+\end{figure}
+
+Per tal de mantenir la memòria ordenada i modular, vaig dividir el document en diversos fitxers \texttt{.tex}, un per a cada capítol.
+Aquesta estructura facilita la navegació i la revisió, ja que puc editar seccions concretes sense afectar la resta del document.
+També vaig utilitzar \texttt{BibTeX} per gestionar la bibliografia, cosa que em permet afegir referències de manera centralitzada i assegurar que totes les cites segueixen un format coherent.
+
+A més, vaig incorporar diversos paquets de \LaTeX\ per millorar la presentació del document: \texttt{graphicx} per a la inclusió de figures, \texttt{float} per controlar la posició dels elements visuals, i \texttt{hyperref} per generar enllaços dins del PDF.
+Aquest conjunt d’eines ha fet possible una composició clara, estructurada i visualment atractiva, que reforça el caràcter acadèmic del treball.
+
+
 
 \section{Gestió de versions i col·laboració}
+En el meu cas, tot el desenvolupament s’ha fet directament a la branca principal del repositori (\texttt{main}).
+Aquesta decisió ha simplificat el flux de treball, ja que no havia de gestionar diverses branques ni fer fusions.
+Cada commit representava un pas endavant en el projecte, i l’historial mostra de manera clara l’evolució del codi i de la memòria.
+
+Treballar d’aquesta manera té avantatges i inconvenients.
+Com a punt positiu, el procés és més àgil i directe: qualsevol canvi queda immediatament integrat al projecte principal.
+D’altra banda, també implica més responsabilitat, ja que un error en un commit afecta directament la versió principal.
+Per minimitzar aquest risc, vaig procurar que cada commit fos petit i descriptiu, de manera que fos fàcil identificar i revertir un canvi si calia.
+
+A més, GitHub ha funcionat com a còpia de seguretat remota.
+En qualsevol moment podia clonar el repositori en un altre ordinador i continuar treballant sense perdre res.
+Aquesta característica m’ha donat tranquil·litat i ha assegurat que el projecte fos accessible i recuperable en tot moment.
+
+
+\subsection{Entorn i control}
 
 Per controlar l’evolució del treball i assegurar la seguretat de la informació, he utilitzat \textbf{GitHub} com a plataforma de control de versions. Cada canvi important tant en el codi com en la memòria s’ha enregistrat mitjançant commits, que permeten documentar el progrés i tornar a versions anteriors en cas de necessitat. Aquesta pràctica ha resultat especialment útil quan he rebut comentaris del tutor: he pogut obrir noves branques per provar modificacions i, un cop validades, fusionar-les al projecte principal. GitHub també ha servit com a espai d’emmagatzematge remot, accessible en qualsevol moment i des de qualsevol dispositiu.
+
+Cada funcionalitat (obtenció de dades, càlcul de distàncies, detecció de transbords, exportació CSV) s'ha implementat en una branca independent i posteriorment fusionada a la branca principal.
+A la Figura~\ref{fig:github} es mostra una captura del repositori amb l'historial de commits.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{./imatges/github_repo.png}
+  \caption{Repositori del projecte a GitHub amb l'historial de commits.}
+  \label{fig:github}
+\end{figure}
+
 
 \section{Programació i tractament de dades}
 
@@ -29,6 +82,15 @@ En aquest procés han estat essencials biblioteques com \texttt{pandas} per al m
 
 Pel que fa a l’edició del codi, he combinat dos entorns: d’una banda, \textbf{Vim}\cite{Vim}, un editor lleuger i potent que em permet treballar ràpidament des del terminal; de l’altra, l’ús de notebooks i scripts més llargs per validar resultats i generar figures. Aquesta doble aproximació m’ha ajudat a mantenir la flexibilitat i la claredat en el desenvolupament.
 
+Un dels reptes més importants va ser la normalització de les dades.
+Tot i que ambdues plataformes ofereixen informació en temps real, els formats no són idèntics: els noms dels camps, les unitats i fins i tot la freqüència d’actualització poden variar.
+Per resoldre-ho, vaig implementar un pas de transformació que harmonitza els camps bàsics (identificador, coordenades, bicis lliures i espais lliures).
+Aquesta feina prèvia és invisible per a l’usuari final, però imprescindible perquè els càlculs de distància i els punts de transbord siguin fiables.
+
+També vaig haver de gestionar errors de connexió amb les APIs, com ara respostes incompletes o temps d’espera superats.
+Per resoldre-ho, vaig implementar mecanismes de control d’errors i valors per defecte, assegurant que el programa no es bloquegés i que sempre retornés una sortida coherent.
+Aquestes estratègies han estat essencials per garantir la robustesa del programa i la qualitat dels resultats.
+
 \section{Procés de desenvolupament}
 
 El projecte no s’ha desenvolupat de manera lineal, sinó seguint un cicle iteratiu:
@@ -42,7 +104,16 @@ El projecte no s’ha desenvolupat de manera lineal, sinó seguint un cicle iter
 
 Aquest procés iteratiu ha permès detectar errors i millorar el projecte de manera constant, apropant-lo progressivament als objectius establerts.
 
+Aquest procés iteratiu no només ha millorat el resultat final, sinó que també m’ha ensenyat a treballar amb una mentalitat de prova i error.
+Cada iteració ha estat una oportunitat per aprendre: des de la importància de documentar bé el codi fins a la necessitat de validar els resultats amb dades reals.
+Aquesta experiència m’ha fet veure que el desenvolupament de programari no és un camí lineal, sinó un procés d’aprenentatge constant.
+En aquest sentit, el procés ha estat tan valuós com el producte final, ja que m’ha donat eines i hàbits que puc aplicar en futurs projectes.
+
 \section{Desenvolupament d'una aplicació web}
+La creació de la interfície amb Streamlit també m’ha obligat a pensar en termes d’experiència d’usuari.
+He hagut de decidir quines opcions eren realment útils i com presentar la informació de manera clara i intuïtiva.
+Per exemple, vaig optar per mostrar els resultats en taules i gràfics senzills, evitant sobrecarregar la pantalla amb massa informació.
+Aquesta part del projecte m’ha fet adonar que no n’hi ha prou amb tenir un codi que funcioni: cal que sigui accessible i entenedor per a persones que no tenen coneixements tècnics.
 
 Per facilitar la interacció amb el programa i fer-lo accessible sense necessitat
 d’utilitzar el terminal, vaig desenvolupar una pàgina web amb la llibreria
@@ -65,3 +136,8 @@ pugui consultar els resultats sense coneixements tècnics de programació.
 \section{Reproductibilitat i transparència}
 
 Finalment, tot el codi, la memòria i les dades derivades del treball es troben disponibles al repositori públic de GitHub. Això garanteix que qualsevol persona pugui reproduir els resultats, analitzar el procés seguit i fins i tot ampliar la feina realitzada. Aquesta aposta per la transparència i la compartició del coneixement connecta amb la filosofia de la recerca científica i reforça el valor del treball com a aportació dins l’àmbit de la mobilitat sostenible.
+
+A més, el fet de publicar el repositori en obert contribueix a la filosofia del programari lliure i de la ciència oberta.
+Altres estudiants o investigadors poden reutilitzar el codi, adaptar-lo a altres ciutats o ampliar-lo amb noves funcionalitats.
+D’aquesta manera, el treball no queda tancat en una memòria acadèmica, sinó que es converteix en una aportació útil i potencialment escalable dins l’àmbit de la mobilitat urbana.
+Aquesta aposta per la transparència reforça el valor del projecte i el connecta amb iniciatives més àmplies de recerca col·laborativa.
