@@ -4,16 +4,27 @@
 La realització d’aquest treball ha requerit combinar diferents eines i metodologies, tant de caràcter tècnic com organitzatiu. En aquest capítol descric el conjunt de recursos utilitzats i la manera com s’han integrat en el procés de recerca, amb l’objectiu de donar una visió clara i transparent del camí seguit.
 
 \section{Entorn de treball}
+Per garantir un entorn estable i controlat vaig optar per treballar dins d'una màquina virtual
+anomenada \textbf{Linkat}. Aquesta decisió va respondre a la necessitat de separar el desenvolupament
+del projecte del sistema operatiu principal i assegurar que tot el programari estigués correctament configurat.
 
-Per garantir un entorn estable i controlat vaig optar per treballar dins d’una \textbf{màquina virtual}. Aquesta elecció respon a la necessitat de separar el desenvolupament del projecte del sistema operatiu principal, evitant problemes de compatibilitat i assegurant que tot el programari necessari estigués perfectament configurat. A la màquina virtual vaig instal·lar una distribució de Linux, que em va permetre tenir accés a les eines habituals de programació i alhora a gestors de paquets que faciliten la instal·lació de biblioteques. Treballar d’aquesta manera també em dóna la possibilitat d’exportar i replicar l’entorn complet en altres ordinadors, mantenint la coherència del projecte i replicar l’entorn complet en altres ordinadors.
+\subsection{Configuració inicial}
+A la màquina virtual Linkat vaig instal·lar una distribució de Linux, que em va permetre:
+\begin{itemize}
+  \item Accedir a les eines habituals de programació.
+  \item Utilitzar gestors de paquets per instal·lar biblioteques.
+  \item Mantenir un entorn net i replicable en altres ordinadors.
+\end{itemize}
 
-A més, aquesta configuració m’ha permès experimentar amb confiança: podia provar noves biblioteques o actualitzacions sense por de trencar el sistema principal.
-En cas que alguna prova fallés, sempre tenia l’opció de tornar a un estat anterior de la màquina virtual, recuperant un entorn estable en pocs minuts.
-Aquest mecanisme, conegut com a \emph{punt de restauració} o \emph{snapshot}, consisteix a guardar una còpia exacta de la màquina en un moment concret.
-D’aquesta manera, el procés de desenvolupament ha estat més segur i flexible, ja que podia avançar amb iteracions ràpides i, alhora, assegurar la continuïtat del projecte.
+\subsection{Punts de restauració i seguretat}
+Un dels avantatges principals de treballar amb Linkat és la possibilitat de crear \emph{punts de restauració}:
+\begin{itemize}
+  \item Permeten tornar a un estat estable en pocs minuts si alguna prova falla.
+  \item Faciliten experimentar amb noves biblioteques o actualitzacions sense risc.
+  \item Augmenten la seguretat i la confiança en el procés de desenvolupament.
+\end{itemize}
 
-Treballar amb una màquina virtual també m’ha ajudat a entendre millor la importància de la gestió d’entorns en projectes de programari.
-No es tracta només de fer que el codi funcioni en el meu ordinador, sinó de garantir que qualsevol altra persona pugui reproduir exactament els mateixos resultats. Per aconseguir-ho, vaig documentar totes les versions de les biblioteques utilitzades i vaig crear un fitxer de requisits amb les dependències del projecte. Això assegura que, en reinstal·lar l’entorn en una altra màquina, es pugui obtenir el mateix comportament i evitar errors derivats de diferències de configuració. Aquest aprenentatge ha estat clau per entendre com es treballa en recerca i en desenvolupament professional, on la coherència i la reproductibilitat són essencials.
+En conjunt, aquest entorn de treball ha estat clau per avançar amb iteracions ràpides, mantenir la coherència i garantir que el projecte sigui replicable en altres contextos.
 
 \section{Redacció i composició del text}
 
@@ -22,7 +33,7 @@ Aquesta eina proporciona una interfície amigable per treballar amb documents ci
 L’ús de \LaTeX\ ha estat clau per mantenir una presentació professional del text, gestionar cites i bibliografia i incloure figures, taules i fórmules sense dificultats.
 A més, la redacció en \LaTeX\ facilita la traçabilitat dels canvis, ja que el codi font del document es pot gestionar igual que el codi d’un programa.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.85\textwidth]{./imatges/memoriaLatex.png}
   \caption{Entorn de redacció de la memòria amb \LaTeX\ i l’editor Kile.}
@@ -35,8 +46,6 @@ També vaig utilitzar \texttt{BibTeX} per gestionar la bibliografia, cosa que em
 
 A més, vaig incorporar diversos paquets de \LaTeX\ per millorar la presentació del document: \texttt{graphicx} per a la inclusió de figures, \texttt{float} per controlar la posició dels elements visuals, i \texttt{hyperref} per generar enllaços dins del PDF.
 Aquest conjunt d’eines ha fet possible una composició clara, estructurada i visualment atractiva, que reforça el caràcter acadèmic del treball.
-
-
 
 \section{Gestió de versions i col·laboració}
 En el meu cas, tot el desenvolupament s’ha fet directament a la branca principal del repositori (\texttt{main}).
@@ -52,7 +61,6 @@ A més, GitHub ha funcionat com a còpia de seguretat remota.
 En qualsevol moment podia clonar el repositori en un altre ordinador i continuar treballant sense perdre res.
 Aquesta característica m’ha donat tranquil·litat i ha assegurat que el projecte fos accessible i recuperable en tot moment.
 
-
 \subsection{Entorn i control}
 
 Per controlar l’evolució del treball i assegurar la seguretat de la informació, he utilitzat \textbf{GitHub} com a plataforma de control de versions. Cada canvi important tant en el codi com en la memòria s’ha enregistrat mitjançant commits, que permeten documentar el progrés i tornar a versions anteriors en cas de necessitat. Aquesta pràctica ha resultat especialment útil quan he rebut comentaris del tutor: he pogut obrir noves branques per provar modificacions i, un cop validades, fusionar-les al projecte principal. GitHub també ha servit com a espai d’emmagatzematge remot, accessible en qualsevol moment i des de qualsevol dispositiu.
@@ -60,7 +68,7 @@ Per controlar l’evolució del treball i assegurar la seguretat de la informaci
 Cada funcionalitat (obtenció de dades, càlcul de distàncies, detecció de transbords, exportació CSV) s'ha implementat en una branca independent i posteriorment fusionada a la branca principal.
 A la Figura~\ref{fig:github} es mostra una captura del repositori amb l'historial de commits.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.9\textwidth]{./imatges/github_repo.png}
   \caption{Repositori del projecte a GitHub amb l'historial de commits.}
@@ -92,7 +100,6 @@ Per resoldre-ho, vaig implementar mecanismes de control d’errors i valors per 
 Aquestes estratègies han estat essencials per garantir la robustesa del programa i la qualitat dels resultats.
 
 \section{Procés de desenvolupament}
-
 El projecte no s’ha desenvolupat de manera lineal, sinó seguint un cicle iteratiu:
 \begin{itemize}
   \item Definició inicial del problema i dels requisits amb el tutor.
@@ -132,9 +139,7 @@ A la interfície, l’usuari pot:
 Aquesta solució amplia la reproductibilitat del treball i fa possible que qualsevol persona
 pugui consultar els resultats sense coneixements tècnics de programació.
 
-
 \section{Reproductibilitat i transparència}
-
 Finalment, tot el codi, la memòria i les dades derivades del treball es troben disponibles al repositori públic de GitHub. Això garanteix que qualsevol persona pugui reproduir els resultats, analitzar el procés seguit i fins i tot ampliar la feina realitzada. Aquesta aposta per la transparència i la compartició del coneixement connecta amb la filosofia de la recerca científica i reforça el valor del treball com a aportació dins l’àmbit de la mobilitat sostenible.
 
 A més, el fet de publicar el repositori en obert contribueix a la filosofia del programari lliure i de la ciència oberta.

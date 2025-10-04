@@ -36,9 +36,24 @@ Per a cada estació es calculava aquest valor i es mostrava per pantalla juntame
 El concepte és senzill, però molt pràctic: indica quants usuaris podrien intercanviar bicicleta i aparcament al mateix temps sense problemes.
 D’aquesta manera es poden identificar les estacions més equilibrades i les que poden generar més inconvenients.
 
-\section{Cap a la integració dels sistemes}
+\section{Diagrama de flux del sistema}
 
-Aquests programes inicials van ser fonamentals per entendre com funcionaven les dues xarxes i per establir les bases del projecte.
-Primer vaig comprovar que podia connectar-me a les APIs i llegir les dades, i després vaig començar a aplicar-hi càlculs propis.
+Després de les proves inicials i de definir el concepte de canvi ràpid, vaig poder construir una estructura clara del funcionament del sistema.
+Aquest diagrama de flux resumeix les etapes principals del projecte, des de la consulta de dades fins a la visualització final:
 
-El següent pas, que es recull a l’apartat de \textbf{Resultats}, va ser combinar tota aquesta feina en un programa més complet capaç d’integrar Bicing i AMBici, aplicar filtres, calcular punts de transbord i exportar resultats.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\textwidth]{./imatges/diagrama_flux_dades.png}
+  \caption{Diagrama de flux del tractament de dades: des de l’API del Bicing fins a la visualització amb Streamlit.}
+  \label{fig:diagrama_flux_dades}
+\end{figure}
+
+El procés comença amb la \textbf{consulta a l’API}, que pot ser la del Bicing (a través de CityBikes) o la d’AMBici (en format GBFS).
+Les dades s’obtenen en \textbf{format JSON}, que permet estructurar la informació de manera clara i accessible.
+
+Un cop rebudes, les dades són tractades amb \textbf{Python}, utilitzant biblioteques com \texttt{requests} per fer les crides i \texttt{json} per interpretar el contingut.
+En aquesta fase també s’aplica el càlcul del \emph{canvi ràpid} i es filtren les estacions segons criteris definits.
+
+Finalment, els resultats es mostren en una \textbf{aplicació web creada amb Streamlit}, que permet visualitzar les dades en temps real, consultar estacions, exportar resultats i navegar de manera interactiva.
+
+Aquest diagrama ajuda a entendre com es connecten les diferents parts del projecte i com s’ha construït una solució funcional a partir de components senzills però ben integrats.
