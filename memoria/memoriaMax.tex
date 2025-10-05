@@ -50,7 +50,7 @@
 \usepackage{titlesec}
 
 \titleformat{\chapter}[block]
-  {\normalfont\huge\bfseries\center}{\thechapter.}{1em}{\Huge}
+  {\normalfont\huge\bfseries\center}{\thechapter.}{0.5em}{\Huge}
 \titlespacing*{\chapter}{-0.5cm}{-1.5cm}{0.5cm}
 \titlespacing*{\subsection}{0pt}{0.5cm}{0.3cm}
 \renewcommand{\chaptername}{}
@@ -66,7 +66,7 @@
 \cleardoublepage
 
 \input{./cover/agraiments}
-
+\cleardoublepage
 \input{./cover/resum}
 
 \cleardoublepage
@@ -79,8 +79,8 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[RE,LO]{La Riera Blanca, una frontera invisible?}
-\fancyhead[LE,RO]{\leftmark}
-\fancyfoot[RE,LO]{Institut Sants}
+\fancyhead[LE,RO]{Institut Sants}
+\fancyfoot[RE,LO]{\leftmark}
 \fancyfoot[LE,RO]{\thepage}
 \renewcommand{\headrulewidth}{2pt}
 \renewcommand{\footrulewidth}{1pt}
