@@ -3,8 +3,10 @@
 
 \section{Visualització de resultats}
 
-A més de la sortida per terminal i l’exportació a CSV, vaig generar diverses figures per representar gràficament les dades obtingudes.
-Aquestes imatges ajuden a entendre millor la distribució de les estacions i els punts de possible connexió entre Bicing i AMBici.
+A més de la sortida per terminal i l’exportació a CSV, vaig generar diverses figures per representar gràficament les dades obtingudes. Aquestes visualitzacions són especialment útils per identificar patrons geogràfics, comparar recursos entre serveis i detectar punts de connexió potencials.
+
+Les imatges que es presenten a continuació han estat generades automàticament a partir de les dades obtingudes en temps real mitjançant les APIs de Bicing i AMBici. Cada gràfic respon a un objectiu concret del projecte i contribueix a confirmar les hipòtesis plantejades a l'inici. A més, aquestes figures aporten una visió més clara i intuïtiva del problema plantejat i mostren com la combinació de dades obertes i eines de programació pot ser útil per analitzar la mobilitat metropolitana.
+
 
 \subsection{Mapa de totes les estacions}
 
@@ -55,7 +57,59 @@ Les tres figures confirmen les hipòtesis inicials del treball:
 
 Aquestes visualitzacions aporten una visió més clara i intuïtiva del problema plantejat i mostren com la combinació de dades obertes i eines de programació pot ser útil per analitzar la mobilitat metropolitana.
 
+\section{Anàlisi espacial i cobertura territorial}
+
+A partir dels mapes generats, es pot observar una clara separació territorial entre les dues xarxes. El Bicing cobreix principalment el nucli urbà de Barcelona, mentre que l’AMBici s’estén per municipis de l’àrea metropolitana com l’Hospitalet, Cornellà o Sant Adrià.
+
+Aquesta distribució mostra que, tot i que hi ha estacions molt properes entre serveis, no estan pensades per funcionar conjuntament. Això representa una oportunitat: punts com la Riera Blanca podrien actuar com a punts de transició.
+
+Una anàlisi més detallat de la cobertura territorial revela que:
+\begin{itemize}
+    \item El Bicing té una densitat d’estacions més alta, especialment a l’Eixample i Ciutat Vella.
+    \item L’AMBici presenta una cobertura més dispersa però estratègica, amb estacions prop de parades de metro i intercanviadors.
+    \item Els punts de transbord detectats es concentren en zones limítrofes, però no estan senyalitzats ni pensats per facilitar el pas entre serveis.
+\end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.85\textwidth]{imatges/mapaDeCalor_bicing_ambici.png}
+  \caption{Mapa de calor de la densitat d’estacions de Bicing (colors càlids) i AMBici (colors freds) a l’àrea metropolitana de Barcelona. Es pot observar la concentració d’estacions de Bicing al centre de la ciutat i la presència més dispersa d’AMBici a municipis com l’Hospitalet.}
+  \label{fig:mapaDeCalor_bicing_ambici}
+\end{figure}
+
+Aquestes observacions podrien servir com a base per a estudis posteriors sobre equitat territorial, accessibilitat i planificació de la mobilitat.
+
 \section{Resum del programa final}
+
+El programa desenvolupat integra dades en temps real de les APIs de Bicing i AMBici, les processa i genera indicadors útils per a l’usuari. El funcionament és modular, amb diferents blocs que s’encarreguen de la connexió amb les APIs, el filtratge geogràfic, el càlcul de transbords i la generació de sortides.
+
+A continuació es presenta una taula amb les funcionalitats principals implementades:
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|p{4cm}|p{10cm}|}
+\hline
+\textbf{Funcionalitat} & \textbf{Descripció} \\
+\hline
+Obtenció de dades & Connexió amb les APIs de Bicing i AMBici per descarregar l’estat actual de les estacions. \\
+\hline
+Filtrat geogràfic & Detecció de parelles d’estacions dins un radi de 250 metres per identificar punts de transbord. \\
+\hline
+Càlcul de canvi ràpid & Càlcul d’un indicador que combina distància i disponibilitat per recomanar transbords òptims. \\
+\hline
+Exportació & Generació de fitxers CSV amb totes les estacions i resultats per a anàlisis complementàries. \\
+\hline
+Visualització & Creació automàtica de mapes i gràfics per facilitar la interpretació dels resultats. \\
+\hline
+Aplicació web & Interfície interactiva amb Streamlit per consultar els resultats des del navegador. \\
+\hline
+\end{tabular}
+\caption{Funcionalitats implementades al programa final.}
+\label{tab:funcionalitats_programa}
+\end{table}
+
+Aquest enfocament modular permet que el programa sigui fàcilment ampliable. Per exemple, es podrien afegir nous serveis de bicicleta compartida, ajustar el radi de transbord o incorporar filtres per hora del dia. A més, el codi està documentat i estructurat per facilitar la reutilització i la col·laboració.
+
 Després d'executar el programa final i de generar les figures, disposem d'un conjunt de dades i visualitzacions que permeten:
 \begin{itemize}
  \item Identificar les estacions amb més capacitat d'intercanvi immediat (indicador \emph{canvi ràpid}).
@@ -91,6 +145,30 @@ Resum global
 
 Punts de transbord Bicing a AMBici:
 - Riera Blanca - Travessera de les Corts a Hospi\-talet - Coll\-blanc [185\ m]
+\end{verbatim}
+
+\section{Fragments de codi rellevants}
+
+Per il·lustrar com es generen alguns dels resultats presentats, es mostren a continuació
+fragments de codi que connecten directament amb les figures i taules del capítol.
+
+\subsection{Càlcul de l’indicador de canvi ràpid}
+Aquest fragment mostra com, a partir de les dades de cada estació, es calcula el valor
+de \emph{canvi ràpid}, que després s’utilitza per ordenar i comparar estacions:
+
+\begin{verbatim}
+bicis = st.get("free_bikes") or 0
+espais = st.get("empty_slots") or 0
+canvi_rapid = min(bicis, espais)
+\end{verbatim}
+
+\subsection{Detecció de punts de transbord}
+El següent fragment correspon a la funció que identifica estacions de Bicing i AMBici
+separades per menys de 250 metres, base de la Figura~\ref{fig:map_transbords}:
+
+\begin{verbatim}
+if distancia_m(b["lat"], b["lon"], a["lat"], a["lon"]) <= 250:
+    punts.append((b, a, int(d)))
 \end{verbatim}
 
 \section{Aplicació web interactiva}
