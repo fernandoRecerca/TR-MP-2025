@@ -6,7 +6,7 @@ La realització d’aquest treball ha requerit combinar diferents eines i metodo
 \section{Entorn de treball}
 Per fer aquest treball vaig optar per a treball amb l'ordinador que ens ha proporcionat el Departament d'Ensenyament. Aquest ordinador presenta moltes limitacions pel que fa a instal·lar i configurar programes nous. Per tal de superar aquest inconvenient, vaig optar per treballar dins d'una màquina virtual disponible en els ordinadors del centre. Aquesta màquina virtual està desenvolupada per l'empresa Oracle~\cite{} i permet instal·lar un sistema operatiu dins d'un altre sistema operatiu. Per tant, la màquina virtual permet que l'usuari configuri l'ordinador com vulgui, podent saltar-se els controls que imposa el Departament d'Ensenyament sense posar en perill la integritat del sistema operatiu principal.
 
-\subsection{Configuració inicial}
+\subsection*{Configuració de la màquina virtual}
 La màquina virtual de l'ordinador de l'alumnat porta instal·lada Linkat\cite{}, una distribució de Linux basada en Ubuntu~\cite{
 }, creada pel Departament d'Ensenyament, que em va permetre:
 \begin{itemize}
@@ -16,22 +16,22 @@ La màquina virtual de l'ordinador de l'alumnat porta instal·lada Linkat\cite{}
   \item Configurar tots els programes i els recursos del sistema d'acord amb les necessitats que he tingut en cada moment.
 \end{itemize}
 
-\subsection{Punts de restauració i seguretat}
-Un dels avantatges principals de treballar amb Linkat és la possibilitat de crear \emph{punts de restauració}:
-\begin{itemize}
-  \item Permeten tornar a un estat estable en pocs minuts si alguna prova falla.
-  \item Faciliten experimentar amb noves biblioteques o actualitzacions sense risc.
-  \item Augmenten la seguretat i la confiança en el procés de desenvolupament.
-\end{itemize}
+% \subsection{Punts de restauració i seguretat}
+% Un dels avantatges principals de treballar amb Linkat és la possibilitat de crear \emph{punts de restauració}:
+% \begin{itemize}
+%   \item Permeten tornar a un estat estable en pocs minuts si alguna prova falla.
+%   \item Faciliten experimentar amb noves biblioteques o actualitzacions sense risc.
+%   \item Augmenten la seguretat i la confiança en el procés de desenvolupament.
+% \end{itemize}
+%
+% En conjunt, aquest entorn de treball ha estat clau per avançar amb iteracions ràpides, mantenir la coherència i garantir que el projecte sigui replicable en altres contextos.
 
-En conjunt, aquest entorn de treball ha estat clau per avançar amb iteracions ràpides, mantenir la coherència i garantir que el projecte sigui replicable en altres contextos.
+\section{Redacció i composició de la memòria}
 
-\section{Redacció i composició del text}
-
-La memòria s’ha redactat íntegrament amb \LaTeX, utilitzant l’editor \textbf{Kile}\cite{kile}.
+La memòria s’ha redactat íntegrament amb \LaTeX~\cite{}, utilitzant l’editor \textbf{Kile}~\cite{kile}.
 Aquesta eina proporciona una interfície amigable per treballar amb documents científics, permet dividir el treball en capítols i seccions, i ofereix eines per compilar ràpidament a PDF.
-L’ús de \LaTeX\ ha estat clau per mantenir una presentació professional del text, gestionar cites i bibliografia i incloure figures, taules i fórmules sense dificultats.
-A més, la redacció en \LaTeX\ facilita la traçabilitat dels canvis, ja que el codi font del document es pot gestionar igual que el codi d’un programa.
+L’ús de \LaTeX\~ha estat clau per mantenir una presentació professional del text, gestionar remissions (cites internes), cites bibliogràfiques i incloure figures, taules i fórmules sense dificultats.
+A més, la redacció en \LaTeX\~facilita la traçabilitat dels canvis, ja que el codi font del document es pot gestionar igual que el codi d’un programa.
 
 \begin{figure}[htbp]
   \centering
@@ -48,37 +48,44 @@ A més, vaig incorporar diversos paquets de \LaTeX\ per millorar la presentació
 Aquest conjunt d’eines ha fet possible una composició clara, estructurada i visualment atractiva, que reforça el caràcter acadèmic del treball.
 
 \section{Gestió de versions i col·laboració}
-En el meu cas, tot el desenvolupament s’ha fet directament a la branca principal del repositori (\texttt{main}).
-Aquesta decisió ha simplificat el flux de treball, ja que no havia de gestionar diverses branques ni fer fusions.
-Cada commit representava un pas endavant en el projecte, i l’historial mostra de manera clara l’evolució del codi i de la memòria.
+
+
+
+Per controlar l’evolució del treball i assegurar la seguretat de la informació, he utilitzat \textbf{GitHub}~\cite{} com a plataforma de control de versions basada en Git~\cite{}. Cada canvi important tant en el codi com en la memòria s’ha enregistrat mitjançant \textit{commit}s, que permeten documentar el progrés i tornar a versions anteriors en cas de necessitat. Aquesta pràctica ha resultat especialment útil quan he rebut comentaris del tutor: he pogut obrir noves branques per provar modificacions i, un cop validades, fusionar-les al projecte principal.
+
+GitHub també ha servit com a espai d’emmagatzematge remot, accessible en qualsevol moment i des de qualsevol dispositiu.
+Cada funcionalitat (obtenció de dades, càlcul de distàncies, detecció de transbords, exportació CSV) s'ha implementat en una branca independent i posteriorment fusionada a la branca principal.
+
+El meu treball de recerca s'ha desenvolupat completament al repositori (\texttt{main}) del meu projecte de GitHub TR-MP-2025~\cite{TR-MP-2025}.
+Cada \textit{commit} representava un pas endavant en el projecte, i l’historial mostra de manera clara l’evolució del codi i de la memòria.
+
+A la Figura~\ref{fig:github} es mostra una captura del repositori amb l'historial de \textit{commit}s.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{./imatges/github_repo.png}
+  \caption{Repositori del projecte a GitHub amb l'historial de \textit{commit}s.}
+  \label{fig:github}
+\end{figure}
 
 Treballar d’aquesta manera té avantatges i inconvenients.
 Com a punt positiu, el procés és més àgil i directe: qualsevol canvi queda immediatament integrat al projecte principal.
-D’altra banda, també implica més responsabilitat, ja que un error en un commit afecta directament la versió principal.
-Per minimitzar aquest risc, vaig procurar que cada commit fos petit i descriptiu, de manera que fos fàcil identificar i revertir un canvi si calia.
+D’altra banda, també implica més responsabilitat, ja que un error en un \textit{commit} afecta directament la versió principal.
+Per minimitzar aquest risc, vaig procurar que cada \textit{commit} fos petit i descriptiu, de manera que fos fàcil identificar i revertir un canvi si calia.
 
 A més, GitHub ha funcionat com a còpia de seguretat remota.
 En qualsevol moment podia clonar el repositori en un altre ordinador i continuar treballant sense perdre res.
 Aquesta característica m’ha donat tranquil·litat i ha assegurat que el projecte fos accessible i recuperable en tot moment.
 
-\subsection{Entorn i control}
+Cal fer notar que aquest recurs ha dotat el treball de recerca de traçabilitat, de llibertat i facilita la transferència de coneixement, que eren alguns dels objectius del treball.
 
-Per controlar l’evolució del treball i assegurar la seguretat de la informació, he utilitzat \textbf{GitHub} com a plataforma de control de versions. Cada canvi important tant en el codi com en la memòria s’ha enregistrat mitjançant commits, que permeten documentar el progrés i tornar a versions anteriors en cas de necessitat. Aquesta pràctica ha resultat especialment útil quan he rebut comentaris del tutor: he pogut obrir noves branques per provar modificacions i, un cop validades, fusionar-les al projecte principal. GitHub també ha servit com a espai d’emmagatzematge remot, accessible en qualsevol moment i des de qualsevol dispositiu.
+% \subsection{Entorn i control}
 
-Cada funcionalitat (obtenció de dades, càlcul de distàncies, detecció de transbords, exportació CSV) s'ha implementat en una branca independent i posteriorment fusionada a la branca principal.
-A la Figura~\ref{fig:github} es mostra una captura del repositori amb l'historial de commits.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.9\textwidth]{./imatges/github_repo.png}
-  \caption{Repositori del projecte a GitHub amb l'historial de commits.}
-  \label{fig:github}
-\end{figure}
 
 
 \section{Programació i tractament de dades}
 
-El llenguatge de programació principal ha estat \textbf{Python}, per la seva flexibilitat i la gran varietat de biblioteques disponibles. El desenvolupament del codi s’ha centrat en quatre tasques fonamentals:
+El llenguatge de programació principal, recomanat pels professors universitaris, ha estat \textbf{Python}, per la seva flexibilitat i la gran varietat de biblioteques disponibles. El desenvolupament del codi s’ha centrat en quatre tasques fonamentals:
 \begin{enumerate}
   \item Accedir a les \textbf{APIs} públiques de Bicing i AMBici per obtenir dades en temps real.
   \item Processar i netejar les dades obtingudes, assegurant que fossin consistents i comparables.
@@ -86,7 +93,7 @@ El llenguatge de programació principal ha estat \textbf{Python}, per la seva fl
   \item Generar sortides en diversos formats: resums de terminal, fitxers CSV i representacions gràfiques.
 \end{enumerate}
 
-Pel que fa a l’edició del codi, he combinat dos entorns: d’una banda, \textbf{Vim}\cite{Vim}, un editor lleuger i potent que em permet treballar ràpidament des del terminal; de l’altra, l’ús de notebooks i scripts més llargs per validar resultats i generar figures. Aquesta doble aproximació m’ha ajudat a mantenir la flexibilitat i la claredat en el desenvolupament.
+Pel que fa a l’edició del codi, he combinat dos entorns: d’una banda, \textbf{Vim}~\cite{Vim}, un editor lleuger i potent que em permet treballar ràpidament des del terminal; de l’altra, l’ús de notebooks i scripts més llargs per validar resultats i generar figures. Aquesta doble aproximació m’ha ajudat a mantenir la flexibilitat i la claredat en el desenvolupament.
 
 Un dels reptes més importants va ser la normalització de les dades.
 Tot i que ambdues plataformes ofereixen informació en temps real, els formats no són idèntics: els noms dels camps, les unitats i fins i tot la freqüència d’actualització poden variar.
@@ -115,14 +122,14 @@ Aquesta experiència m’ha fet veure que el desenvolupament de programari no é
 En aquest sentit, el procés ha estat tan valuós com el producte final, ja que m’ha donat eines i hàbits que puc aplicar en futurs projectes.
 
 \section{Desenvolupament d'una aplicació web}
-La creació de la interfície amb Streamlit també m’ha obligat a pensar en termes d’experiència d’usuari.
+La creació de la interfície amb \textbf{Streamlit}~\cite{streamlit} també m’ha obligat a pensar en termes d’experiència d’usuari.
 He hagut de decidir quines opcions eren realment útils i com presentar la informació de manera clara i intuïtiva.
 Per exemple, vaig optar per mostrar els resultats en taules i gràfics senzills, evitant sobrecarregar la pantalla amb massa informació.
 Aquesta part del projecte m’ha fet adonar que no n’hi ha prou amb tenir un codi que funcioni: cal que sigui accessible i entenedor per a persones que no tenen coneixements tècnics.
 
 Per facilitar la interacció amb el programa i fer-lo accessible sense necessitat
 d’utilitzar el terminal, vaig desenvolupar una pàgina web amb la llibreria
-\textbf{Streamlit}\cite{streamlit} de Python. Aquesta eina permet convertir un script en una
+\textbf{Streamlit} de Python. Aquesta eina permet convertir un script en una
 aplicació web interactiva de manera senzilla i ràpida.
 
 A la interfície, l’usuari pot:
@@ -138,7 +145,7 @@ Aquesta solució amplia la reproductibilitat del treball i fa possible que quals
 pugui consultar els resultats sense coneixements tècnics de programació.
 
 \section{Reproductibilitat i transparència}
-Finalment, tot el codi, la memòria i les dades derivades del treball es troben disponibles al repositori públic de GitHub. Això garanteix que qualsevol persona pugui reproduir els resultats, analitzar el procés seguit i fins i tot ampliar la feina realitzada. Aquesta aposta per la transparència i la compartició del coneixement connecta amb la filosofia de la recerca científica i reforça el valor del treball com a aportació dins l’àmbit de la mobilitat sostenible.
+Finalment, tot el codi, la memòria i les dades derivades del treball es troben disponibles al repositori públic de GitHub~\cite{TR-MP-2025}. Això garanteix que qualsevol persona pugui reproduir els resultats, analitzar el procés seguit i fins i tot ampliar la feina realitzada. Aquesta aposta per la transparència i la transferència de coneixement connecta amb la filosofia de la recerca científica i reforça el valor del treball com a aportació dins l’àmbit de la mobilitat sostenible.
 
 A més, el fet de publicar el repositori en obert contribueix a la filosofia del programari lliure i de la ciència oberta.
 Altres estudiants o investigadors poden reutilitzar el codi, adaptar-lo a altres ciutats o ampliar-lo amb noves funcionalitats.
