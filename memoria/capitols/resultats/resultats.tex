@@ -11,27 +11,28 @@ Les imatges que es presenten a continuació han estat generades automàticament 
 \subsection{Mapa de totes les estacions}
 
 A la Figura \ref{fig:map_estacions} es mostren totes les estacions detectades en temps real.
-Les estacions de \textbf{Bicing} apareixen en vermell, mentre que les d’\textbf{AMBici} es representen en blau.
+Les estacions de \textbf{Bicing} apareixen en taronja, mentre que les d’\textbf{AMBici} es representen en blau.
 Es pot observar com el Bicing cobreix sobretot l’interior de Barcelona, mentre que l’AMBici es concentra a municipis de l’àrea metropolitana, com l’Hospitalet.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.8\textwidth]{imatges/map_estacions.png}
-  \caption{Distribució geogràfica de les estacions de Bicing (vermell) i AMBici (blau).}
+  \caption{Distribució geogràfica de les estacions de Bicing (taronja) i AMBici (blau).}
   \label{fig:map_estacions}
 \end{figure}
 
-\subsection{Mapa de punts de transbord}
+\subsection{Distribució de distàncies entre estacions}
 
-La Figura \ref{fig:map_transbords} mostra els punts de transbord detectats, és a dir, parelles d’estacions de Bicing i AMBici separades per menys de 250 metres.
-Les línies uneixen les estacions més properes entre si.
-En aquest mapa es veu clarament la zona de la \textbf{Riera Blanca}, on hi ha estacions de les dues xarxes molt a prop, però l’usuari no pot fer un trajecte continu.
+La Figura \ref{fig:distancies} mostra la distribució acumulada de distàncies entre totes les parelles d’estacions de Bicing i AMBici.
+Aquest gràfic permet veure de manera clara quin percentatge de parelles es troben dins de cada llindar de distància.
+Per exemple, es pot identificar ràpidament quina proporció d’estacions es troben a menys de 250 metres, 500 metres o 1 km.
+Això aporta una visió més global i quantitativa que el mapa de línies, evitant la saturació visual i permetent interpretar millor la proximitat real entre xarxes.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{imatges/map_transbords.png}
-  \caption{Punts de transbord detectats (línies entre estacions Bicing i AMBici separades per menys de 250 m).}
-  \label{fig:map_transbords}
+  \includegraphics[width=0.8\textwidth]{imatges/distancies.png}
+  \caption{Punts de transbord detectats (Distribució de distàncies entre estacions Bicing i AMBici. .}
+  \label{fig:distancies}
 \end{figure}
 
 \subsection{Comparativa de recursos}
@@ -164,7 +165,6 @@ canvi_rapid = min(bicis, espais)
 
 \subsection{Detecció de punts de transbord}
 El següent fragment correspon a la funció que identifica estacions de Bicing i AMBici
-separades per menys de 250 metres, base de la Figura~\ref{fig:map_transbords}:
 
 \begin{verbatim}
 if distancia_m(b["lat"], b["lon"], a["lat"], a["lon"]) <= 250:

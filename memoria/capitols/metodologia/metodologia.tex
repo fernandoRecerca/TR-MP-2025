@@ -4,11 +4,10 @@
 La realització d’aquest treball ha requerit combinar diferents eines i metodologies, tant de caràcter tècnic com organitzatiu. En aquest capítol descric el conjunt de recursos utilitzats i la manera com s’han integrat en el procés de recerca, amb l’objectiu de donar una visió clara i transparent del camí seguit.
 
 \section{Entorn de treball}
-Per fer aquest treball vaig optar per a treball amb l'ordinador que ens ha proporcionat el Departament d'Ensenyament. Aquest ordinador presenta moltes limitacions pel que fa a instal·lar i configurar programes nous. Per tal de superar aquest inconvenient, vaig optar per treballar dins d'una màquina virtual disponible en els ordinadors del centre. Aquesta màquina virtual està desenvolupada per l'empresa Oracle~\cite{} i permet instal·lar un sistema operatiu dins d'un altre sistema operatiu. Per tant, la màquina virtual permet que l'usuari configuri l'ordinador com vulgui, podent saltar-se els controls que imposa el Departament d'Ensenyament sense posar en perill la integritat del sistema operatiu principal.
+Per fer aquest treball vaig optar per a treball amb l'ordinador que ens ha proporcionat el Departament d'Ensenyament. Aquest ordinador presenta moltes limitacions pel que fa a instal·lar i configurar programes nous. Per tal de superar aquest inconvenient, vaig optar per treballar dins d'una màquina virtual disponible en els ordinadors del centre. Aquesta màquina virtual està desenvolupada per l'empresa Oracle~\cite{Oracle} i permet instal·lar un sistema operatiu dins d'un altre sistema operatiu. Per tant, la màquina virtual permet que l'usuari configuri l'ordinador com vulgui, podent saltar-se els controls que imposa el Departament d'Ensenyament sense posar en perill la integritat del sistema operatiu principal.
 
 \subsection*{Configuració de la màquina virtual}
-La màquina virtual de l'ordinador de l'alumnat porta instal·lada Linkat\cite{}, una distribució de Linux basada en Ubuntu~\cite{
-}, creada pel Departament d'Ensenyament, que em va permetre:
+La màquina virtual de l'ordinador de l'alumnat porta instal·lada Linkat\cite{Linkat}, una distribució de Linux basada en Ubuntu~\cite{Ubuntu}, creada pel Departament d'Ensenyament, que em va permetre:
 \begin{itemize}
   \item Accedir a les eines habituals de programació de manera lliure i sense cap cost.
   \item Utilitzar gestors de paquets per instal·lar biblioteques de manera fácil i segura.
@@ -28,7 +27,7 @@ La màquina virtual de l'ordinador de l'alumnat porta instal·lada Linkat\cite{}
 
 \section{Redacció i composició de la memòria}
 
-La memòria s’ha redactat íntegrament amb \LaTeX~\cite{}, utilitzant l’editor \textbf{Kile}~\cite{kile}.
+La memòria s’ha redactat íntegrament amb \LaTeX~\cite{LaTeX}, utilitzant l’editor \textbf{Kile}~\cite{kile}.
 Aquesta eina proporciona una interfície amigable per treballar amb documents científics, permet dividir el treball en capítols i seccions, i ofereix eines per compilar ràpidament a PDF.
 L’ús de \LaTeX\~ha estat clau per mantenir una presentació professional del text, gestionar remissions (cites internes), cites bibliogràfiques i incloure figures, taules i fórmules sense dificultats.
 A més, la redacció en \LaTeX\~facilita la traçabilitat dels canvis, ja que el codi font del document es pot gestionar igual que el codi d’un programa.
@@ -51,7 +50,7 @@ Aquest conjunt d’eines ha fet possible una composició clara, estructurada i v
 
 
 
-Per controlar l’evolució del treball i assegurar la seguretat de la informació, he utilitzat \textbf{GitHub}~\cite{} com a plataforma de control de versions basada en Git~\cite{}. Cada canvi important tant en el codi com en la memòria s’ha enregistrat mitjançant \textit{commit}s, que permeten documentar el progrés i tornar a versions anteriors en cas de necessitat. Aquesta pràctica ha resultat especialment útil quan he rebut comentaris del tutor: he pogut obrir noves branques per provar modificacions i, un cop validades, fusionar-les al projecte principal.
+Per controlar l’evolució del treball i assegurar la seguretat de la informació, he utilitzat \textbf{GitHub}~\cite{GitHub}, com a plataforma de control de versions basada en Git~\cite{git}. Cada canvi important tant en el codi com en la memòria s’ha enregistrat mitjançant \textit{commit}s, que permeten documentar el progrés i tornar a versions anteriors en cas de necessitat. Aquesta pràctica ha resultat especialment útil quan he rebut comentaris del tutor: he pogut obrir noves branques per provar modificacions i, un cop validades, fusionar-les al projecte principal.
 
 GitHub també ha servit com a espai d’emmagatzematge remot, accessible en qualsevol moment i des de qualsevol dispositiu.
 Cada funcionalitat (obtenció de dades, càlcul de distàncies, detecció de transbords, exportació CSV) s'ha implementat en una branca independent i posteriorment fusionada a la branca principal.
@@ -93,6 +92,14 @@ El llenguatge de programació principal, recomanat pels professors universitaris
   \item Generar sortides en diversos formats: resums de terminal, fitxers CSV i representacions gràfiques.
 \end{enumerate}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.85\textwidth]{imatges/capturaTerminal.png}
+  \caption{Execució del programa en la terminal amb \textbf{Python}.}
+  \label{fig:capturaTerminal}
+\end{figure}
+
+
 Pel que fa a l’edició del codi, he combinat dos entorns: d’una banda, \textbf{Vim}~\cite{Vim}, un editor lleuger i potent que em permet treballar ràpidament des del terminal; de l’altra, l’ús de notebooks i scripts més llargs per validar resultats i generar figures. Aquesta doble aproximació m’ha ajudat a mantenir la flexibilitat i la claredat en el desenvolupament.
 
 Un dels reptes més importants va ser la normalització de les dades.
@@ -113,6 +120,13 @@ El projecte no s’ha desenvolupat de manera lineal, sinó seguint un cicle iter
   \item Revisió periòdica dels resultats amb el tutor i adaptació segons els comentaris rebuts.
   \item Integració de tots els elements (codi, figures i text) en un document coherent redactat amb \LaTeX.
 \end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.85\textwidth]{imatges/deteccioDeTransbords.png}
+  \caption{Codi de detecció de punts de transbord entre estacions de Bicing i AMBici.}
+  \label{fig:deteccioDeTransbords}
+\end{figure}
 
 Aquest procés iteratiu ha permès detectar errors i millorar el projecte de manera constant, apropant-lo progressivament als objectius establerts.
 
@@ -140,6 +154,14 @@ A la interfície, l’usuari pot:
     \item Consultar les figures generades (mapa d’estacions, punts de transbord i comparativa de recursos).
     \item Descarregar el fitxer \texttt{CSV} amb el resum de totes les estacions.
 \end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.85\textwidth]{imatges/capturaPagina.png}
+  \caption{Web creada amb Streamlit, que permet consultar els resultats de manera visual i interactiva.}
+  \label{fig:capturaPagina}
+\end{figure}
+
 
 Aquesta solució amplia la reproductibilitat del treball i fa possible que qualsevol persona
 pugui consultar els resultats sense coneixements tècnics de programació.
