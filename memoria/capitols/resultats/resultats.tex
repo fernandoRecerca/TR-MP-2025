@@ -26,19 +26,21 @@ Es pot observar com el Bicing cobreix sobretot l’interior de Barcelona, mentre
 La Figura \ref{fig:distancies} mostra la distribució acumulada de distàncies entre tots els punts de connexió d’estacions de Bicing i AMBici.
 Aquest gràfic permet veure de manera clara quin percentatge de parelles es troben dins de cada distància.
 Per exemple, es pot identificar ràpidament quina proporció d’estacions es troben a menys de 250 metres, 500 metres o 1 km.
-Això aporta una visió més global i quantitativa que el mapa de barres, evitant les possibles creencies i permetre interpretar millor la proximitat real entre xarxes.
+Això aporta una visió més global i
+% quantitativa que el diagrama de barres, que evita possibles prejudicis i
+permet interpretar millor la proximitat real entre xarxes.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.8\textwidth]{imatges/distancies.png}
-  \caption{Punts de transbord detectats (Distribució de distàncies entre estacions Bicing i AMBici. .}
+  \caption{Punts de transbord detectats (Distribució de distàncies entre estacions Bicing i AMBici).}
   \label{fig:distancies}
 \end{figure}
 
 \subsection{Comparativa de recursos}
 
-Finalment, a la Figura \ref{fig:compare_bicis} es mostra un gràfic de barres amb el total de bicicletes lliures, espais lliures i canvis ràpids en cada servei.
-Aquesta comparació permet veure diferències en capacitat entre les dues xarxes: el Bicing té un volum més gran d’estacions i bicicletes, mentre que l’AMBici té menys punts però ofereix també un nombre significatiu de canvis ràpids.
+Finalment, a la Figura~\ref{fig:compare_bicis} es mostra un gràfic de barres amb el total de bicicletes lliures, espais lliures i canvis ràpids en cada servei.
+Aquesta comparació permet veure diferències en capacitat entre les dues xarxes: el Bicing té un volum més gran d’estacions i bicicletes, mentre que l’AMBici té menys punts però ofereix un nombre significatiu de canvis ràpids.
 
 \begin{figure}[htbp]
   \centering
@@ -68,7 +70,7 @@ Aquesta distribució mostra que, tot i que hi ha estacions molt properes entre s
 
 Una anàlisi més detallada de la cobertura territorial revela que:
 \begin{itemize}
-    \item El Bicing té una densitat d’estacions més alta, especialment a l’Eixample i Ciutat Vella.
+    \item El Bicing té una densitat d’estacions més alta, que es concentra a l’Eixample i Ciutat Vella.
     \item L’AMBici presenta una cobertura més dispersa, però estratègica, amb estacions prop de parades de metro i intercanviadors.
     \item Els punts de transbord detectats es concentren en zones contínues, però no estan senyalitzats ni pensats per facilitar el pas entre serveis.
 \end{itemize}
@@ -80,14 +82,14 @@ Una anàlisi més detallada de la cobertura territorial revela que:
   \label{fig:mapaDeCalor_bicing_ambici}
 \end{figure}
 \clearpage
-La figura~\ref{fig:mapaDeCalor_bicing_ambici} mostra el mapa de calor de la densitat d’estacions de Bicing (colors càlids) i AMBici (colors freds) a l’àrea metropolitana de Barcelona. Es pot observar la concentració d’estacions de Bicing al centre de la ciutat i la presència més dispersa d’AMBici a municipis com l’Hospitalet.
+La Figura~\ref{fig:mapaDeCalor_bicing_ambici} mostra el mapa de calor de la densitat d’estacions de Bicing (colors càlids) i AMBici (colors freds) a l’àrea metropolitana de Barcelona. Es pot observar la concentració d’estacions de Bicing al centre de la ciutat i la presència més dispersa d’AMBici a municipis com l’Hospitalet.
 Aquestes observacions podrien servir com a base per a estudis posteriors sobre equitat territorial, accessibilitat i planificació de la mobilitat.
 
 \section{Resum del programa final}
 
 El programa desenvolupat integra dades en temps real de les APIs de Bicing i AMBici, les processa i genera indicadors útils per a l’usuari. El funcionament és modular, amb diferents blocs que s’encarreguen de la connexió amb les APIs, la part geogràfica, el càlcul de transbords i la generació de sortides.
 
-A continuació es presenta la taula \ref{tab:funcionalitats_programa} amb les funcionalitats principals implementades:
+A continuació es presenta la Taula~\ref{tab:funcionalitats_programa} amb les funcionalitats principals implementades:
 
 \begin{table}[htbp]
 \centering
@@ -160,13 +162,13 @@ fragments de codi que connecten directament amb les figures i taules del capíto
 
 Per detectar punts de transbord entre les xarxes Bicing i AMBici, ha estat necessari calcular la distància entre totes les parelles possibles d’estacions. Aquest càlcul és fonamental per determinar si dues estacions es troben dins del radi de 250 metres.
 
-La fórmula utilitzada ha estat la de \textbf{Haversine}, que permet calcular la distància entre dos punts sobre la superfície terrestre a partir de les seves coordenades geogràfiques (latitud i longitud). Aquesta fórmula té en compte la curvatura de la Terra i és especialment útil en contextos de geolocalització.
+La fórmula utilitzada ha estat la de \textbf{Haversine}~\cite{}, que permet calcular la distància entre dos punts sobre la superfície terrestre a partir de les seves coordenades geogràfiques (latitud i longitud). Aquesta fórmula té en compte la curvatura de la Terra i és especialment útil en contextos de geolocalització.
 
 La fórmula és la següent:
 
-\[
+$$
 d = 2R \cdot \arcsin\left( \sqrt{ \sin^2\left( \frac{\Delta\phi}{2} \right) + \cos(\phi_1) \cdot \cos(\phi_2) \cdot \sin^2\left( \frac{\Delta\lambda}{2} \right) } \right)
-\]
+$$
 
 
 
