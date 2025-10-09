@@ -66,11 +66,11 @@ A partir dels mapes generats, es pot observar una clara separació territorial e
 
 Aquesta distribució mostra que, tot i que hi ha estacions molt properes entre serveis, no estan pensades per funcionar conjuntament. Això representa una oportunitat: punts com la Riera Blanca podrien actuar com a punts de transició.
 
-Una anàlisi més detallat de la cobertura territorial revela que:
+Una anàlisi més detallada de la cobertura territorial revela que:
 \begin{itemize}
     \item El Bicing té una densitat d’estacions més alta, especialment a l’Eixample i Ciutat Vella.
-    \item L’AMBici presenta una cobertura més dispersa però estratègica, amb estacions prop de parades de metro i intercanviadors.
-    \item Els punts de transbord detectats es concentren en zones continues, però no estan senyalitzats ni pensats per facilitar el pas entre serveis.
+    \item L’AMBici presenta una cobertura més dispersa, però estratègica, amb estacions prop de parades de metro i intercanviadors.
+    \item Els punts de transbord detectats es concentren en zones contínues, però no estan senyalitzats ni pensats per facilitar el pas entre serveis.
 \end{itemize}
 
 \begin{figure}[h!]
@@ -118,7 +118,7 @@ Després d'executar el programa final i de generar les figures, disposem d'un co
 \begin{itemize}
  \item Identificar les estacions amb més capacitat d'intercanvi immediat (indicador \emph{canvi ràpid}).
  \item Localitzar punts de transbord de Bicing a AMBici (distància 250 m).
- \item Comparar recursos totals (bicicletes, espais i canvis ràpids) entre ambdós serveis.
+ \item Comparar recursos totals (bicicletes, espais i canvis ràpids) entre els dos serveis.
  \item Obtenir un CSV amb totes les estacions per a anàlisis complementàries.
 \end{itemize}
 
@@ -156,6 +156,32 @@ Punts de transbord Bicing a AMBici:
 Per il·lustrar com es generen alguns dels resultats presentats, es mostren a continuació
 fragments de codi que connecten directament amb les figures i taules del capítol.
 
+\subsection{Càlcul de distància entre estacions}
+
+Per detectar punts de transbord entre les xarxes Bicing i AMBici, ha estat necessari calcular la distància entre totes les parelles possibles d’estacions. Aquest càlcul és fonamental per determinar si dues estacions es troben dins del radi de 250 metres.
+
+La fórmula utilitzada ha estat la de \textbf{Haversine}, que permet calcular la distància entre dos punts sobre la superfície terrestre a partir de les seves coordenades geogràfiques (latitud i longitud). Aquesta fórmula té en compte la curvatura de la Terra i és especialment útil en contextos de geolocalització.
+
+La fórmula és la següent:
+
+\[
+d = 2R \cdot \arcsin\left( \sqrt{ \sin^2\left( \frac{\Delta\phi}{2} \right) + \cos(\phi_1) \cdot \cos(\phi_2) \cdot \sin^2\left( \frac{\Delta\lambda}{2} \right) } \right)
+\]
+
+
+
+On:
+\begin{itemize}
+  \item \( d \) és la distància entre els dos punts (en metres).
+  \item \( R \) és el radi de la Terra (aproximadament 6.371.000 m).
+  \item \( \phi_1, \phi_2 \) són les latituds dels dos punts (en radians).
+  \item \( \lambda_1, \lambda_2 \) són les longituds dels dos punts (en radians).
+  \item \( \Delta\phi = \phi_2 - \phi_1 \)
+  \item \( \Delta\lambda = \lambda_2 - \lambda_1 \)
+\end{itemize}
+
+Aquest càlcul s’ha implementat en Python i aplicat a totes les parelles d’estacions. El resultat ha estat una llista de distàncies que ha permès identificar quines parelles compleixen el criteri de proximitat. Aquesta informació és la base per calcular el “canvi ràpid” i per generar les visualitzacions que s’han presentat anteriorment.
+
 \subsection{Càlcul de l’indicador de canvi ràpid}
 Aquest fragment mostra com, a partir de les dades de cada estació, es calcula el valor
 de \emph{canvi ràpid}, que després s’utilitza per ordenar i comparar estacions:
@@ -185,8 +211,8 @@ A la web, l’usuari pot:
     \item Visualitzar el resum global de bicicletes i espais disponibles.
     \item Consultar els punts de transbord detectats.
     \item Veure els mapes i gràfics generats.
-    \item Descarregar el fitxer \texttt{CSV} amb totes les estacions per fer anàlisis propis.
+    \item Descarregar el fitxer \texttt{CSV} amb totes les estacions per fer anàlisis propia.
 \end{itemize}
 
-Això complementa la línia de comandes i ofereix un entorn visual i accessible,
+Això complementa la línia d'ordres i ofereix un entorn visual i accessible,
 fent que el projecte sigui més pràctic i útil per a usuaris reals.
