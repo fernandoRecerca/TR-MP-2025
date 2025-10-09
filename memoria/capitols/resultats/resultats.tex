@@ -3,16 +3,16 @@
 
 \section{Visualització de resultats}
 
-A més de la sortida per terminal i l’exportació a CSV, vaig generar diverses figures per representar gràficament les dades obtingudes. Aquestes visualitzacions són especialment útils per identificar patrons geogràfics, comparar recursos entre serveis i detectar punts de connexió potencials.
+A més de la sortida per terminal i l’exportació a CSV, vaig generar diverses figures per representar gràficament les dades obtingudes. Aquestes visualitzacions són especialment útils per identificar patrons geogràfics, comparar recursos entre serveis i detectar punts de connexió.
 
-Les imatges que es presenten a continuació han estat generades automàticament a partir de les dades obtingudes en temps real mitjançant les APIs de Bicing i AMBici. Cada gràfic respon a un objectiu concret del projecte i contribueix a confirmar les hipòtesis plantejades a l'inici. A més, aquestes figures aporten una visió més clara i intuïtiva del problema plantejat i mostren com la combinació de dades obertes i eines de programació pot ser útil per analitzar la mobilitat metropolitana.
+Les imatges que es presenten a continuació han estat generades automàticament a partir de les dades obtingudes en temps real mitjançant les APIs de Bicing i AMBici. Cada gràfic respon a un objectiu concret del projecte i contribueix a confirmar les hipòtesis plantejades a l'inici. A més, aquestes figures aporten una visió més clara i intuïtiva del problema plantejat i mostren com la combinació de dades obertes i eines de programació poden ser útils per analitzar la mobilitat metropolitana.
 
 
 \subsection{Mapa de totes les estacions}
 
 A la Figura \ref{fig:map_estacions} es mostren totes les estacions detectades en temps real.
 Les estacions de \textbf{Bicing} apareixen en taronja, mentre que les d’\textbf{AMBici} es representen en blau.
-Es pot observar com el Bicing cobreix sobretot l’interior de Barcelona, mentre que l’AMBici es concentra a municipis de l’àrea metropolitana, com l’Hospitalet.
+Es pot observar com el Bicing cobreix sobretot l’interior de Barcelona, mentre que l’AMBici es concentra a municipis com l’Hospitalet.
 
 \begin{figure}[htbp]
   \centering
@@ -23,10 +23,10 @@ Es pot observar com el Bicing cobreix sobretot l’interior de Barcelona, mentre
 
 \subsection{Distribució de distàncies entre estacions}
 
-La Figura \ref{fig:distancies} mostra la distribució acumulada de distàncies entre totes les parelles d’estacions de Bicing i AMBici.
-Aquest gràfic permet veure de manera clara quin percentatge de parelles es troben dins de cada llindar de distància.
+La Figura \ref{fig:distancies} mostra la distribució acumulada de distàncies entre tots els punts de connexió d’estacions de Bicing i AMBici.
+Aquest gràfic permet veure de manera clara quin percentatge de parelles es troben dins de cada distància.
 Per exemple, es pot identificar ràpidament quina proporció d’estacions es troben a menys de 250 metres, 500 metres o 1 km.
-Això aporta una visió més global i quantitativa que el mapa de línies, evitant la saturació visual i permetent interpretar millor la proximitat real entre xarxes.
+Això aporta una visió més global i quantitativa que el mapa de barres, evitant les possibles creencies i permetre interpretar millor la proximitat real entre xarxes.
 
 \begin{figure}[htbp]
   \centering
@@ -52,7 +52,7 @@ Aquesta comparació permet veure diferències en capacitat entre les dues xarxes
 Les tres figures confirmen les hipòtesis inicials del treball:
 \begin{itemize}
     \item El Bicing i l’AMBici cobreixen territoris diferents, amb un punt crític de contacte a la Riera Blanca.
-    \item Existeixen diversos punts de transbord potencials, però no estan integrats en un mateix sistema.
+    \item Existeixen diversos punts de transbord, però no estan integrats en un mateix sistema.
     \item Tot i la diferència de volum, els dos serveis ofereixen capacitats comparables pel que fa al nombre de canvis ràpids en relació amb la seva mida.
 \end{itemize}
 
@@ -68,7 +68,7 @@ Una anàlisi més detallat de la cobertura territorial revela que:
 \begin{itemize}
     \item El Bicing té una densitat d’estacions més alta, especialment a l’Eixample i Ciutat Vella.
     \item L’AMBici presenta una cobertura més dispersa però estratègica, amb estacions prop de parades de metro i intercanviadors.
-    \item Els punts de transbord detectats es concentren en zones limítrofes, però no estan senyalitzats ni pensats per facilitar el pas entre serveis.
+    \item Els punts de transbord detectats es concentren en zones continues, però no estan senyalitzats ni pensats per facilitar el pas entre serveis.
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -82,9 +82,9 @@ Aquestes observacions podrien servir com a base per a estudis posteriors sobre e
 
 \section{Resum del programa final}
 
-El programa desenvolupat integra dades en temps real de les APIs de Bicing i AMBici, les processa i genera indicadors útils per a l’usuari. El funcionament és modular, amb diferents blocs que s’encarreguen de la connexió amb les APIs, el filtratge geogràfic, el càlcul de transbords i la generació de sortides.
+El programa desenvolupat integra dades en temps real de les APIs de Bicing i AMBici, les processa i genera indicadors útils per a l’usuari. El funcionament és modular, amb diferents blocs que s’encarreguen de la connexió amb les APIs, la part geogràfica, el càlcul de transbords i la generació de sortides.
 
-A continuació es presenta una taula amb les funcionalitats principals implementades:
+A continuació es presenta la taula \ref{tab:funcionalitats_programa} amb les funcionalitats principals implementades:
 
 \begin{table}[htbp]
 \centering
@@ -175,16 +175,15 @@ if distancia_m(b["lat"], b["lon"], a["lat"], a["lon"]) <= 250:
 
 A més dels resultats obtinguts al terminal i de les figures generades en format d’imatge,
 el projecte disposa d’una \textbf{aplicació web interactiva} creada amb Streamlit.
-Aquesta aplicació permet executar el programa final directament des del navegador i obtenir
-els mateixos resultats de manera més intuïtiva.
+Aquesta aplicació permet executar el programa final directament des del navegador i obtenir els mateixos resultats, però més accessibles.
 
 A la web, l’usuari pot:
 \begin{itemize}
     \item Visualitzar el resum global de bicicletes i espais disponibles.
     \item Consultar els punts de transbord detectats.
     \item Veure els mapes i gràfics generats.
-    \item Descarregar el fitxer \texttt{CSV} amb totes les estacions per fer anàlisis pròpies.
+    \item Descarregar el fitxer \texttt{CSV} amb totes les estacions per fer anàlisis propis.
 \end{itemize}
 
-Aquesta interfície complementa la línia de comandes i ofereix un entorn visual i accessible,
+Això complementa la línia de comandes i ofereix un entorn visual i accessible,
 fent que el projecte sigui més pràctic i útil per a usuaris reals.
